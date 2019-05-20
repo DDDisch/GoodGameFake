@@ -7,16 +7,17 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     MenuRight menuRight;
     StatusBar statusBar = new StatusBar();
-    private SimpleIntegerProperty wood = new SimpleIntegerProperty(300);
-    private SimpleIntegerProperty stone = new SimpleIntegerProperty(300);
-    private SimpleIntegerProperty food = new SimpleIntegerProperty(300);
-    private SimpleIntegerProperty money = new SimpleIntegerProperty(300);
+    private SimpleIntegerProperty wood = new SimpleIntegerProperty();
+    private SimpleIntegerProperty stone = new SimpleIntegerProperty();
+    private SimpleIntegerProperty food = new SimpleIntegerProperty();
+    private SimpleIntegerProperty money = new SimpleIntegerProperty();
 
     @Override
     public void start(Stage primaryStage) {
@@ -27,11 +28,16 @@ public class Main extends Application {
         primaryStage.setFullScreen(true);
         primaryStage.show();
 
-        menuRight.createMenuItem("Build", 1);
-        menuRight.createMenuItem("Soldier", 2 );
-        menuRight.createMenuItem("Attack",3 );
+        menuRight.createMenuItem("Build",new Image("images/icon/pickaxe.png"), 1);
+        menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 );
+        menuRight.createMenuItem("Attack",new Image("images/icon/sword.png"),3 );
 
         addListener();
+
+        wood.set(300);
+        stone.set(300);
+        money.set(300);
+        food.set(300);
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());

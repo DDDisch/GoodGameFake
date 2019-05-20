@@ -1,14 +1,11 @@
 package UI;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -28,7 +25,10 @@ public class MenuRight extends VBox {
     }
 
     public void createMenuItem(String title, Image image, int mode) {
-        Button button = new Button(title, new ImageView(image));
+        ImageView iv = new ImageView(image);
+        iv.setFitHeight(20);
+        iv.setFitWidth(20);
+        Button button = new Button(title, iv);
         this.getChildren().add(button);
         button.setOnAction(e -> this.generateListener(mode));
     }

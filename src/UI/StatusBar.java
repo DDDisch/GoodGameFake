@@ -1,23 +1,38 @@
 package UI;
 
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class StatusBar extends HBox {
-    public TextField wood = new TextField();
-    public TextField money = new TextField();
-    public TextField stone = new TextField();
-    public TextField food = new TextField();
-    private ImageView woodImage = new ImageView(new Image(""));
-    private ImageView moneyImage = new ImageView(new Image(""));
-    private ImageView stoneImage = new ImageView(new Image(""));
-    private ImageView foodImage = new ImageView(new Image(""));
+    public Label wood = new Label();
+    public Label money = new Label();
+    public Label stone = new Label();
+    public Label food = new Label();
+    private ImageView woodImage = new ImageView(new Image("images/icon/helmet.png"));
+    private ImageView moneyImage = new ImageView(new Image("images/icon/helmet.png"));
+    private ImageView stoneImage = new ImageView(new Image("images/icon/helmet.png"));
+    private ImageView foodImage = new ImageView(new Image("images/icon/helmet.png"));
 
     public StatusBar() {
         super();
         position();
+
+        this.setAlignment(Pos.CENTER);
+
+        woodImage.setFitHeight(20);
+        woodImage.setFitWidth(20);
+
+        moneyImage.setFitHeight(20);
+        moneyImage.setFitWidth(20);
+
+        stoneImage.setFitHeight(20);
+        stoneImage.setFitWidth(20);
+
+        foodImage.setFitHeight(20);
+        foodImage.setFitWidth(20);
     }
 
     private void position() {
