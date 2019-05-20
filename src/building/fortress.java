@@ -1,4 +1,4 @@
-package fortress;
+package building;
 
 import javafx.scene.image.Image;
 
