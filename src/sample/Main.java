@@ -1,6 +1,7 @@
 package sample;
 
 import UI.MenuRight;
+import UI.PreConfig;
 import UI.StatusBar;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -51,6 +52,7 @@ public class Main extends Application {
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());
+        PreConfig preConfig = new PreConfig();
 
     }
 
