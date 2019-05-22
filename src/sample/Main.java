@@ -5,7 +5,9 @@ import UI.PreConfig;
 import UI.StatusBar;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
@@ -23,11 +25,13 @@ public class Main extends Application {
     public static SimpleDoubleProperty stone = new SimpleDoubleProperty();
     public static SimpleDoubleProperty food = new SimpleDoubleProperty();
     public static SimpleDoubleProperty money = new SimpleDoubleProperty();
+    public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
+    public static SimpleIntegerProperty soldierCount = new SimpleIntegerProperty(0);
 
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
-        grid.generateGrid(root, 500,50,50);
+        grid.generateGrid(root, 500,50,50, primaryStage);
         menuRight = new MenuRight(primaryStage);
         primaryStage.setTitle("Strategy Game");
         primaryStage.setScene(new Scene(root, 600, 600));
@@ -39,9 +43,7 @@ public class Main extends Application {
             }
         });
 
-        menuRight.createMenuItem("Build",new Image("images/icon/pickaxe.png"), 1);
-        menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 );
-        menuRight.createMenuItem("Attack",new Image("images/icon/sword.png"),3 );
+        menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
 
         addListener();
 
@@ -57,21 +59,15 @@ public class Main extends Application {
     }
 
     private void addListener() {
-        wood.addListener((observable, oldValue, newValue) -> {
-            statusBar.wood.setText("" + newValue);
-        });
+        wood.addListener((observable, oldValue, newValue) -> statusBar.wood.setText("" + (int)Math.round(wood.getValue())));
 
-        stone.addListener((observable, oldValue, newValue) -> {
-            statusBar.stone.setText("" + newValue);
-        });
+        stone.addListener((observable, oldValue, newValue) -> statusBar.stone.setText("" + (int)Math.round(stone.getValue())));
 
-        food.addListener((observable, oldValue, newValue) -> {
-            statusBar.food.setText("" + newValue);
-        });
+        food.addListener((observable, oldValue, newValue) -> statusBar.food.setText("" + (int)Math.round(food.getValue())));
 
-        money.addListener((observable, oldValue, newValue) -> {
-            statusBar.money.setText("" + newValue);
-        });
+        money.addListener((observable, oldValue, newValue) -> statusBar.money.setText("" + (int)Math.round(money.getValue())));
+
+        soldierBuild.addListener((observable, oldValue, newValue) -> menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 ));
     }
 
     public static void main(String[] args) {

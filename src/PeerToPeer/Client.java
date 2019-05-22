@@ -51,6 +51,7 @@ public class Client {
            }
         });
         readFromServer.start();
+        readFromServer.setDaemon(true);
 
         if (!writeToServer.isAlive() || !readFromServer.isAlive())
         {

@@ -4,14 +4,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.Main;
 
-public class woodFarm extends ImageView {
-    public double generate = 0.2;
+public class stoneFarm extends ImageView {
+    private double generate = 0.2;
     private int level = 1;
     private Image image;
     private double woodCost=150, stoneCost=0;
 
-    public woodFarm() {
-        super(new Image("images.buildings/wood/Wood1.png"));
+    public stoneFarm() {
+        super(new Image("images.buildings/stone/Stone1.png"));
         this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 

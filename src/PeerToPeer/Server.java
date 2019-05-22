@@ -40,6 +40,7 @@ public class Server
                 }
             });
             writeToServer.start();
+            writeToServer.setDaemon(true);
 
 
             Thread readFromServer = new Thread(()->{
