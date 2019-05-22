@@ -11,13 +11,13 @@ public class stoneFarm extends ImageView {
     private double woodCost=150, stoneCost=0;
 
     public stoneFarm() {
-        super(new Image("images.buildings/stone/Stone1.png"));
+        super(new Image("images.buildings/stone/Iron1.png"));
         this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
     private void nextLevel(double wood, double stone) {
         if (level < 3) {
-            if(level == 2) {
+            if(level == 1) {
                 woodCost *= 2;
                 stoneCost = 300;
                 generate *= 3;
@@ -31,12 +31,10 @@ public class stoneFarm extends ImageView {
         }
 
         if(wood > woodCost && stone > stoneCost) {
-            if(level == 1) {
-                this.setImage(new Image("images.buildings/wood/Wood1.png"));
-            } else if(level == 2) {
-                this.setImage(new Image("images.buildings/wood/Wood2.png"));
+            if(level == 2) {
+                this.setImage(new Image("images.buildings/stone/Iron2.png"));
             } else if(level == 3) {
-                this.setImage(new Image("images.buildings/wood/Wood3.png"));
+                this.setImage(new Image("images.buildings/stone/Iron3.png"));
             }
         } else {
             level--;

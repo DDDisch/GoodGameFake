@@ -1,5 +1,7 @@
 package map;
 
+import building.foodFarm;
+import building.stoneFarm;
 import building.woodFarm;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -80,13 +82,22 @@ public class grid {
             });
 
             stone.setOnAction(j -> {
-                //root.getChildren().add();
+                stoneFarm w = new stoneFarm();
+                w.setFitHeight(rect.getHeight());
+                w.setFitWidth(rect.getWidth());
+                w.setX(rect.getX());
+                w.setY(rect.getY());
+                root.getChildren().add(w);
                 dialog.hide();
             });
 
             food.setOnAction(j -> {
-
-                //root.getChildren().add();
+                foodFarm w = new foodFarm();
+                w.setFitHeight(rect.getHeight());
+                w.setFitWidth(rect.getWidth());
+                w.setX(rect.getX());
+                w.setY(rect.getY());
+                root.getChildren().add(w);
                 dialog.hide();
             });
 
