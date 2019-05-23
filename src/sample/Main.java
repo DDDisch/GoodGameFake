@@ -26,7 +26,6 @@ public class Main extends Application {
     public static SimpleDoubleProperty food = new SimpleDoubleProperty();
     public static SimpleDoubleProperty money = new SimpleDoubleProperty();
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
-    public static SimpleIntegerProperty soldierCount = new SimpleIntegerProperty(0);
 
     @Override
     public void start(Stage primaryStage) {
@@ -47,10 +46,10 @@ public class Main extends Application {
 
         addListener();
 
-        wood.set(300);
-        stone.set(300);
-        money.set(300);
-        food.set(300);
+        wood.set(1000);
+        stone.set(1000);
+        money.set(1000);
+        food.set(1000);
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());
@@ -59,15 +58,15 @@ public class Main extends Application {
     }
 
     private void addListener() {
-        wood.addListener((observable, oldValue, newValue) -> statusBar.wood.setText("" + (int)Math.round(wood.getValue())));
+        wood.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> statusBar.wood.setText("" + (int)Math.round(wood.getValue()))));
 
-        stone.addListener((observable, oldValue, newValue) -> statusBar.stone.setText("" + (int)Math.round(stone.getValue())));
+        stone.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> statusBar.stone.setText("" + (int)Math.round(stone.getValue()))));
 
-        food.addListener((observable, oldValue, newValue) -> statusBar.food.setText("" + (int)Math.round(food.getValue())));
+        food.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> statusBar.food.setText("" + (int)Math.round(food.getValue()))));
 
-        money.addListener((observable, oldValue, newValue) -> statusBar.money.setText("" + (int)Math.round(money.getValue())));
+        money.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> statusBar.money.setText("" + (int)Math.round(money.getValue()))));
 
-        soldierBuild.addListener((observable, oldValue, newValue) -> menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 ));
+        soldierBuild.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 )));
     }
 
     public static void main(String[] args) {

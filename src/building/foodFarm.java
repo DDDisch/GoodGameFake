@@ -4,14 +4,31 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.Main;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class foodFarm extends ImageView {
-    private double generate = 0.2;
+    private double generate = 0.3;
     private int level = 1;
     private Image image;
     private double woodCost=150, stoneCost=0;
+    private Timer timer = new Timer(true);
 
     public foodFarm() {
-        super(new Image("images.buildings/food/Farm1.png"));
+        super();
+        if(Main.wood.getValue() >= woodCost && Main.stone.getValue() >= stoneCost) {
+            this.setImage(new Image("images.buildings/food/Farm1.png"));
+            Main.wood.setValue(Main.wood.getValue() - woodCost);
+            Main.stone.setValue(Main.stone.getValue() - stoneCost);
+        }
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Main.food.setValue(Main.food.getValue()+generate);
+            }
+        }, 1000,1000);
+
         this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
@@ -30,7 +47,9 @@ public class foodFarm extends ImageView {
             }
         }
 
-        if(wood > woodCost && stone > stoneCost) {
+        if(wood >= woodCost && stone >= stoneCost) {
+            Main.wood.setValue(wood-woodCost);
+            Main.stone.setValue(stone-stoneCost);
             if(level == 2) {
                 this.setImage(new Image("images.buildings/food/Farm2.png"));
             } else if(level == 3) {

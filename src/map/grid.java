@@ -1,8 +1,6 @@
 package map;
 
-import building.foodFarm;
-import building.stoneFarm;
-import building.woodFarm;
+import building.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,9 +13,12 @@ import javafx.scene.shape.RectangleBuilder;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 public class grid {
     public static void generateGrid(BorderPane root, int size,int width, int height, Stage primaryStage) {
         Rectangle rect = null;
+        int randFortressPlace = new Random().nextInt(109);
         for (int x = 0, c = 0; x < size; x = x + width, c++) {
             for (int y = 0; y < size; y = y + height) {
                 if (c % 2 == 0) {
@@ -41,6 +42,15 @@ public class grid {
                 assert rect != null;
                 root.getChildren().add(rect);
                 addListener(rect, root, primaryStage);
+
+                if(c == randFortressPlace) {
+                    fortress w = new fortress();
+                    w.setFitHeight(rect.getHeight());
+                    w.setFitWidth(rect.getWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                }
 
                 c++;
             }
@@ -73,36 +83,61 @@ public class grid {
 
             wood.setOnAction(j -> {
                 woodFarm w = new woodFarm();
-                w.setFitHeight(rect.getHeight());
-                w.setFitWidth(rect.getWidth());
-                w.setX(rect.getX());
-                w.setY(rect.getY());
-                root.getChildren().add(w);
+                if(w.getImage() != null) {
+                    w.setFitHeight(rect.getHeight());
+                    w.setFitWidth(rect.getWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
                 dialog.hide();
             });
 
             stone.setOnAction(j -> {
                 stoneFarm w = new stoneFarm();
-                w.setFitHeight(rect.getHeight());
-                w.setFitWidth(rect.getWidth());
-                w.setX(rect.getX());
-                w.setY(rect.getY());
-                root.getChildren().add(w);
+                if(w.getImage() != null) {
+                    w.setFitHeight(rect.getHeight());
+                    w.setFitWidth(rect.getWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
                 dialog.hide();
             });
 
             food.setOnAction(j -> {
                 foodFarm w = new foodFarm();
-                w.setFitHeight(rect.getHeight());
-                w.setFitWidth(rect.getWidth());
-                w.setX(rect.getX());
-                w.setY(rect.getY());
-                root.getChildren().add(w);
+                if(w.getImage() != null) {
+                    w.setFitHeight(rect.getHeight());
+                    w.setFitWidth(rect.getWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
                 dialog.hide();
             });
 
             soldier.setOnAction(j -> {
-                //root.getChildren.add();
+                barracks w = new barracks();
+                if(w.getImage() != null) {
+                    w.setFitHeight(rect.getHeight());
+                    w.setFitWidth(rect.getWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
                 dialog.hide();
             });
 
