@@ -11,7 +11,7 @@ public class foodFarm extends ImageView {
     private double generate = 0.3;
     private int level = 1;
     private Image image;
-    private double woodCost=150, stoneCost=0;
+    private double woodCost=150, stoneCost=50;
     private Timer timer = new Timer(true);
 
     public foodFarm() {

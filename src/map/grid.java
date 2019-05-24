@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.RectangleBuilder;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -69,13 +70,41 @@ public class grid {
 
             root2.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-            Button wood = new Button("Holzfäller", new ImageView(new Image("images.buildings/wood/Wood1.png")));
-            Button stone = new Button("Steinbruch", new ImageView(new Image("images.buildings/stone/Iron1.png")));
-            Button food = new Button("Bauernhof", new ImageView(new Image("images.buildings/food/Farm1.png")));
-            Button soldier = new Button("Kaserne", new ImageView(new Image("images.buildings/soldier/Barracks1.png")));
-            Button house = new Button("Wohnhaus", new ImageView(new Image("images.buildings/house/Garage1.png")));
+            ImageView woodIV = new ImageView(new Image("images.buildings/wood/Wood1.png"));
+            ImageView stoneIV = new ImageView(new Image("images.buildings/stone/Iron1.png"));
+            ImageView foodIV = new ImageView(new Image("images.buildings/food/Farm1.png"));
+            ImageView soldierIV = new ImageView(new Image("images.buildings/soldier/Barracks1.png"));
+            ImageView houseIV = new ImageView(new Image("images.buildings/house/Garage1.png"));
 
-            VBox vbox = new VBox(wood, stone, food, soldier, house);
+            woodIV.setFitHeight(20);
+            woodIV.setPreserveRatio(true);
+
+            stoneIV.setFitHeight(20);
+            stoneIV.setPreserveRatio(true);
+
+            foodIV.setFitHeight(20);
+            foodIV.setPreserveRatio(true);
+
+            soldierIV.setFitHeight(20);
+            soldierIV.setPreserveRatio(true);
+
+            houseIV.setFitHeight(20);
+            houseIV.setPreserveRatio(true);
+
+            Button wood = new Button("Holzfäller", woodIV);
+            Button stone = new Button("Steinbruch", stoneIV);
+            Button food = new Button("Bauernhof", foodIV);
+            Button soldier = new Button("Kaserne", soldierIV);
+            Button house = new Button("Wohnhaus", houseIV);
+
+            Text woodInfo = new Text("Building Cost: 150 Wood");
+            Text stoneInfo = new Text("Building Cost: 250 Wood & 100 Stone");
+            Text foodInfo = new Text("Building Cost: 150 Wood & 50 Stone");
+            Text soldierInfo = new Text("Building Cost: 500 Wood & 200 Stone");
+            Text houseInfo = new Text("Building Cost: 150 Wood");
+
+
+            VBox vbox = new VBox(new HBox(wood, woodInfo), new HBox(stone, stoneInfo), new HBox(food, foodInfo), new HBox(soldier, soldierInfo), new HBox(house, houseInfo));
 
             root2.getChildren().add(vbox);
 
