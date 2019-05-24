@@ -5,11 +5,10 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.RectangleBuilder;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -17,37 +16,27 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class grid {
-    public static void generateGrid(BorderPane root, int size,int width, int height, Stage primaryStage) {
-        Rectangle rect = null;
+    public static void generateGrid(BorderPane root, int size, int width, int height, Stage primaryStage) {
+        ImageView rect = null;
         int randFortressPlace = new Random().nextInt(109);
         for (int x = 0, c = 0; x < size; x = x + width, c++) {
             for (int y = 0; y < size; y = y + height) {
-                if (c % 2 == 0) {
-                     rect = RectangleBuilder.create()
-                            .width(width)
-                            .height(height)
-                            .x(x+10)
-                            .y(y+50)
-                            .style("-fx-fill: darkgreen;")
-                            .build();
-                } else {
-                    rect = RectangleBuilder.create()
-                            .width(width)
-                            .height(height)
-                            .x(x+10)
-                            .y(y+50)
-                            .style("-fx-fill: green;")
-                            .build();
-                }
+                rect = ImageViewBuilder.create()
+                        .fitWidth(width)
+                        .fitHeight(height)
+                        .x(x + 10)
+                        .y(y + 50)
+                        .image(new Image("images/icon/grass.jpg"))
+                        .build();
 
                 assert rect != null;
                 root.getChildren().add(rect);
                 addListener(rect, root, primaryStage);
 
-                if(c == randFortressPlace) {
+                if (c == randFortressPlace) {
                     fortress w = new fortress();
-                    w.setFitHeight(rect.getHeight());
-                    w.setFitWidth(rect.getWidth());
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);
@@ -58,15 +47,13 @@ public class grid {
         }
     }
 
-    private static void addListener(Rectangle rect, BorderPane root, Stage primaryStage) {
+    private static void addListener(ImageView rect, BorderPane root, Stage primaryStage) {
         rect.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
 
             final Popup dialog = new Popup();
 
             GridPane root2 = new GridPane();
             dialog.getContent().add(root2);
-            root2.setMinWidth(500);
-            root2.setMinHeight(400);
 
             root2.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -112,9 +99,9 @@ public class grid {
 
             wood.setOnAction(j -> {
                 woodFarm w = new woodFarm();
-                if(w.getImage() != null) {
-                    w.setFitHeight(rect.getHeight());
-                    w.setFitWidth(rect.getWidth());
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);
@@ -127,9 +114,9 @@ public class grid {
 
             stone.setOnAction(j -> {
                 stoneFarm w = new stoneFarm();
-                if(w.getImage() != null) {
-                    w.setFitHeight(rect.getHeight());
-                    w.setFitWidth(rect.getWidth());
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);
@@ -142,9 +129,9 @@ public class grid {
 
             food.setOnAction(j -> {
                 foodFarm w = new foodFarm();
-                if(w.getImage() != null) {
-                    w.setFitHeight(rect.getHeight());
-                    w.setFitWidth(rect.getWidth());
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);
@@ -157,9 +144,9 @@ public class grid {
 
             soldier.setOnAction(j -> {
                 barracks w = new barracks();
-                if(w.getImage() != null) {
-                    w.setFitHeight(rect.getHeight());
-                    w.setFitWidth(rect.getWidth());
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);

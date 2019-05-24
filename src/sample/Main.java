@@ -34,6 +34,7 @@ public class Main extends Application {
         menuRight = new MenuRight(primaryStage);
         primaryStage.setTitle("Strategy Game");
         primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
         primaryStage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
