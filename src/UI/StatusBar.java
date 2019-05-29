@@ -11,10 +11,10 @@ public class StatusBar extends HBox {
     public Label money = new Label();
     public Label stone = new Label();
     public Label food = new Label();
-    private ImageView woodImage = new ImageView(new Image("images/icon/helmet.png"));
-    private ImageView moneyImage = new ImageView(new Image("images/icon/helmet.png"));
-    private ImageView stoneImage = new ImageView(new Image("images/icon/helmet.png"));
-    private ImageView foodImage = new ImageView(new Image("images/icon/helmet.png"));
+    private ImageView woodImage = new ImageView(new Image("images/icon/wood.png"));
+    private ImageView moneyImage = new ImageView(new Image("images/icon/money.png"));
+    private ImageView stoneImage = new ImageView(new Image("images/icon/stone.png"));
+    private ImageView foodImage = new ImageView(new Image("images/icon/food.png"));
 
     public StatusBar() {
         super();
@@ -36,7 +36,7 @@ public class StatusBar extends HBox {
     }
 
     private void position() {
-        this.getChildren().addAll(woodImage, wood, moneyImage, money, stoneImage, stone, foodImage, food);
+        this.getChildren().addAll(woodImage, wood, stoneImage, stone, foodImage, food, moneyImage, money);
     }
 
     public HBox getHbox() {

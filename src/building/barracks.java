@@ -4,16 +4,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import sample.Main;
 
-public class fortress extends ImageView {
+public class barracks extends ImageView {
     private int level = 1;
     private Image image;
-    private double woodCost=1000, stoneCost=500;
+    private double woodCost=500, stoneCost=200;
 
-    public fortress() {
+    public barracks() {
         super();
-        this.setImage(new Image("images.buildings/fortress/Main1.png"));
-        Main.wood.setValue(Main.wood.getValue() - woodCost);
-        Main.stone.setValue(Main.stone.getValue() - stoneCost);
+        if(Main.wood.getValue() >= woodCost && Main.stone.getValue() >= stoneCost) {
+            this.setImage(new Image("images.buildings/soldier/Barracks2.png"));
+            Main.wood.setValue(Main.wood.getValue() - woodCost);
+            Main.stone.setValue(Main.stone.getValue() - stoneCost);
+            Main.soldierBuild.set(true);
+        }
         this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
@@ -28,9 +31,9 @@ public class fortress extends ImageView {
             Main.wood.setValue(wood-woodCost);
             Main.stone.setValue(stone-stoneCost);
             if(level == 2) {
-                this.setImage(new Image("images.buildings/soldier/Main2.png"));
+                this.setImage(new Image("images.buildings/soldier/Barracks2.png"));
             } else if(level == 3) {
-                this.setImage(new Image("images.buildings/food/Main3.png"));
+                this.setImage(new Image("images.buildings/food/Barracks3.png"));
             }
         } else {
             level--;

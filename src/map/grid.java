@@ -1,38 +1,166 @@
 package map;
 
+import building.*;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.RectangleBuilder;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+
+import java.util.Random;
 
 public class grid {
-    public static void generateGrid(BorderPane root, int size,int width, int height) {
-        Rectangle rect = null;
+    public static void generateGrid(BorderPane root, int size, int width, int height, Stage primaryStage) {
+        ImageView rect = null;
+        int randFortressPlace = new Random().nextInt(109);
         for (int x = 0, c = 0; x < size; x = x + width, c++) {
             for (int y = 0; y < size; y = y + height) {
-                if (c % 2 == 0) {
-                     rect = RectangleBuilder.create()
-                            .width(width)
-                            .height(height)
-                            .x(x+10)
-                            .y(y+50)
-                            .style("-fx-fill: darkgreen;")
-                            .build();
-                } else {
-                    rect = RectangleBuilder.create()
-                            .width(width)
-                            .height(height)
-                            .x(x+10)
-                            .y(y+50)
-                            .style("-fx-fill: green;")
-                            .build();
-                }
+                rect = ImageViewBuilder.create()
+                        .fitWidth(width)
+                        .fitHeight(height)
+                        .x(x + 10)
+                        .y(y + 50)
+                        .image(new Image("images/icon/grass.jpg"))
+                        .build();
 
                 assert rect != null;
                 root.getChildren().add(rect);
+                addListener(rect, root, primaryStage);
+
+                if (c == randFortressPlace) {
+                    fortress w = new fortress();
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                }
 
                 c++;
             }
         }
+    }
+
+    private static void addListener(ImageView rect, BorderPane root, Stage primaryStage) {
+        rect.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+
+            final Popup dialog = new Popup();
+
+            GridPane root2 = new GridPane();
+            dialog.getContent().add(root2);
+
+            root2.setBackground(new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+            ImageView woodIV = new ImageView(new Image("images.buildings/wood/Wood1.png"));
+            ImageView stoneIV = new ImageView(new Image("images.buildings/stone/Iron1.png"));
+            ImageView foodIV = new ImageView(new Image("images.buildings/food/Farm1.png"));
+            ImageView soldierIV = new ImageView(new Image("images.buildings/soldier/Barracks1.png"));
+            ImageView houseIV = new ImageView(new Image("images.buildings/house/Garage1.png"));
+
+            woodIV.setFitHeight(20);
+            woodIV.setPreserveRatio(true);
+
+            stoneIV.setFitHeight(20);
+            stoneIV.setPreserveRatio(true);
+
+            foodIV.setFitHeight(20);
+            foodIV.setPreserveRatio(true);
+
+            soldierIV.setFitHeight(20);
+            soldierIV.setPreserveRatio(true);
+
+            houseIV.setFitHeight(20);
+            houseIV.setPreserveRatio(true);
+
+            Button wood = new Button("Holzfäller", woodIV);
+            Button stone = new Button("Steinbruch", stoneIV);
+            Button food = new Button("Bauernhof", foodIV);
+            Button soldier = new Button("Kaserne", soldierIV);
+            Button house = new Button("Wohnhaus", houseIV);
+
+            Text woodInfo = new Text("Building Cost: 150 Wood");
+            Text stoneInfo = new Text("Building Cost: 250 Wood & 100 Stone");
+            Text foodInfo = new Text("Building Cost: 150 Wood & 50 Stone");
+            Text soldierInfo = new Text("Building Cost: 500 Wood & 200 Stone");
+            Text houseInfo = new Text("Building Cost: 150 Wood");
+
+
+            VBox vbox = new VBox(new HBox(wood, woodInfo), new HBox(stone, stoneInfo), new HBox(food, foodInfo), new HBox(soldier, soldierInfo), new HBox(house, houseInfo));
+
+            root2.getChildren().add(vbox);
+
+            dialog.show(primaryStage);
+
+            wood.setOnAction(j -> {
+                woodFarm w = new woodFarm();
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
+                dialog.hide();
+            });
+
+            stone.setOnAction(j -> {
+                stoneFarm w = new stoneFarm();
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
+                dialog.hide();
+            });
+
+            food.setOnAction(j -> {
+                foodFarm w = new foodFarm();
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
+                dialog.hide();
+            });
+
+            soldier.setOnAction(j -> {
+                barracks w = new barracks();
+                if (w.getImage() != null) {
+                    w.setFitHeight(rect.getFitHeight());
+                    w.setFitWidth(rect.getFitWidth());
+                    w.setX(rect.getX());
+                    w.setY(rect.getY());
+                    root.getChildren().add(w);
+                } else {
+                    w = null;
+                    System.gc();
+                }
+                dialog.hide();
+            });
+
+            house.setOnAction(j -> {
+                //root.getChildren.add();
+                dialog.hide();
+            });
+        });
     }
 }

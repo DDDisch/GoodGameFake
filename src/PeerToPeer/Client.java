@@ -42,6 +42,7 @@ public class Client {
             }
         });
         readFromServer.start();
+        readFromServer.setDaemon(true);
 
         if (!readFromServer.isAlive()) {
             connection = false;
