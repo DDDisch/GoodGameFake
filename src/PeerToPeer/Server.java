@@ -15,7 +15,6 @@ public class Server
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
     static BufferedReader userInputReader;
-    Boolean connection = false;
 
     public Server(int port) throws IOException {
 
@@ -24,7 +23,6 @@ public class Server
             System.out.println("Waiting for connection...");
             socket = servsocket.accept();
             System.out.println("Verbindung hergestellt: " + socket.toString());
-            connection = true;
             outSocket = new PrintWriter(socket.getOutputStream(), true);
             inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -55,7 +53,6 @@ public class Server
 
             if (!readFromServer.isAlive())
             {
-                connection = false;
                 System.out.println("Verbindung beenden");
                 outSocket.close();
                 inSocket.close();

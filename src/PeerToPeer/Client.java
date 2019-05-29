@@ -12,14 +12,12 @@ public class Client {
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
     static BufferedReader userInputReader;
-    Boolean connection = false;
 
     public Client(String host, int port) throws IOException {
 
         System.out.println("Trying to connect...");
         socket = new Socket(host, port);
         System.out.println("Connected");
-        connection = true;
         outSocket = new PrintWriter(socket.getOutputStream(), true);
         inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -45,7 +43,6 @@ public class Client {
         readFromServer.setDaemon(true);
 
         if (!readFromServer.isAlive()) {
-            connection = false;
             outSocket.close();
             inSocket.close();
             userInputReader.close();
