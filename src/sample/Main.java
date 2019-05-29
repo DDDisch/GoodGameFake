@@ -58,8 +58,6 @@ public class Main extends Application {
         root.setTop(statusBar.getHbox());
         preConfig = new PreConfig();
 
-       while(!preConfig.isConnectedBoolean()) {}
-
        write("Disch");
 
     }
@@ -78,22 +76,27 @@ public class Main extends Application {
 
     public void write(String input)
     {
-                if (preConfig.isConnectedBoolean())
+        Thread t = new Thread(()->{
+            while(!preConfig.isConnectedBoolean()) {}
+            if (preConfig.isConnectedBoolean())
+            {
+                if(preConfig.getServer() != null)
                 {
-                    if(preConfig.getServer() != null)
-                    {
-                        preConfig.getServer().write(input);
-                    }
+                    preConfig.getServer().write(input);
+                }
 
-                    if (preConfig.getClient() != null)
-                    {
-                        preConfig.getClient().write(input);
-                    }
-                }
-                else
+                if (preConfig.getClient() != null)
                 {
-                    System.out.println("Could not write content. No connection found.");
+                    preConfig.getClient().write(input);
                 }
+            }
+            else
+            {
+                System.out.println("Could not write content. No connection found.");
+            }
+        });
+        t.start();
+
     }
 
     public static void main(String[] args) {
