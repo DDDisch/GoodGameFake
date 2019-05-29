@@ -10,36 +10,23 @@ import java.net.UnknownHostException;
 
 public class Server
 {
-    static Socket socket = null;
+    Socket socket;
+    ServerSocket servsocket;
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
     static BufferedReader userInputReader;
+    Boolean connection = false;
 
     public Server(int port) throws IOException {
 
         try {
-            ServerSocket servsocket = new ServerSocket(port);
+            servsocket = new ServerSocket(port);
             System.out.println("Waiting for connection...");
-            Socket socket = servsocket.accept();
+            socket = servsocket.accept();
             System.out.println("Verbindung hergestellt: " + socket.toString());
+            connection = true;
             outSocket = new PrintWriter(socket.getOutputStream(), true);
             inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            Thread writeToServer = new Thread(()->{
-                try {
-                    userInputReader = new BufferedReader(new InputStreamReader(System.in));
-                    String userInput;
-
-                    while ((userInput = userInputReader.readLine()) != null) {
-                        outSocket.println(userInput);
-                    }
-
-                } catch (UnknownHostException e) {
-                    System.exit(1);
-                } catch (IOException e) {
-                    System.exit(1);
-                }
-            });
-            writeToServer.start();
 
 
             Thread readFromServer = new Thread(()->{
@@ -48,6 +35,14 @@ public class Server
                     String input;
                     while ((input = inSocket.readLine()) != null) {
                         System.out.println(input);
+
+
+
+                    //Calculation or Registration of Attack
+
+
+
+
                     }
                 } catch (UnknownHostException e) {
                     System.exit(1);
@@ -58,8 +53,9 @@ public class Server
             readFromServer.start();
 
 
-            if (!writeToServer.isAlive() || !readFromServer.isAlive())
+            if (!readFromServer.isAlive())
             {
+                connection = false;
                 System.out.println("Verbindung beenden");
                 outSocket.close();
                 inSocket.close();
@@ -72,4 +68,17 @@ public class Server
             System.err.println(e.toString());
             System.exit(1);
         } }
+
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void write(String userInput)
+    {
+        Thread writeToServer = new Thread(() -> {
+            outSocket.println(userInput);
+        });
+        writeToServer.start();
+    }
 }

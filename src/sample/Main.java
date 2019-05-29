@@ -23,6 +23,8 @@ public class Main extends Application {
     public static SimpleDoubleProperty stone = new SimpleDoubleProperty();
     public static SimpleDoubleProperty food = new SimpleDoubleProperty();
     public static SimpleDoubleProperty money = new SimpleDoubleProperty();
+    PreConfig preConfig;
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -52,7 +54,11 @@ public class Main extends Application {
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());
-        PreConfig preConfig = new PreConfig();
+        preConfig = new PreConfig();
+
+       while(!preConfig.isConnectedBoolean()) {}
+
+       write("Disch");
 
     }
 
@@ -72,6 +78,26 @@ public class Main extends Application {
         money.addListener((observable, oldValue, newValue) -> {
             statusBar.money.setText("" + newValue);
         });
+    }
+
+    public void write(String input)
+    {
+                if (preConfig.isConnectedBoolean())
+                {
+                    if(preConfig.getServer() != null)
+                    {
+                        preConfig.getServer().write(input);
+                    }
+
+                    if (preConfig.getClient() != null)
+                    {
+                        preConfig.getClient().write(input);
+                    }
+                }
+                else
+                {
+                    System.out.println("Could not write content. No connection found.");
+                }
     }
 
     public static void main(String[] args) {

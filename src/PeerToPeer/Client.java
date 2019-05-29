@@ -12,51 +12,57 @@ public class Client {
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
     static BufferedReader userInputReader;
+    Boolean connection = false;
 
     public Client(String host, int port) throws IOException {
 
         System.out.println("Trying to connect...");
         socket = new Socket(host, port);
         System.out.println("Connected");
+        connection = true;
         outSocket = new PrintWriter(socket.getOutputStream(), true);
         inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        Thread writeToServer = new Thread(()->{
-        try {
-            userInputReader = new BufferedReader(new InputStreamReader(System.in));
-            String userInput;
+        Thread readFromServer = new Thread(() -> {
+            try {
+                String input;
+                while ((input = inSocket.readLine()) != null) {
+                    System.out.println(input);
 
-            while ((userInput = userInputReader.readLine()) != null) {
-                outSocket.println(userInput);
+
+                    //Calculation or Registration of Attack
+
+
+
+                }
+            } catch (UnknownHostException e) {
+                System.exit(1);
+            } catch (IOException e) {
+                System.exit(1);
             }
-
-        } catch (UnknownHostException e) {
-            System.exit(1);
-        } catch (IOException e) {
-            System.exit(1);
-        }
-        });
-        writeToServer.start();
-
-        Thread readFromServer = new Thread(()->{
-           try {
-               String input;
-               while ((input = inSocket.readLine()) != null) {
-                   System.out.println(input);
-               }
-           } catch (UnknownHostException e) {
-               System.exit(1);
-           } catch (IOException e) {
-               System.exit(1);
-           }
         });
         readFromServer.start();
 
-        if (!writeToServer.isAlive() || !readFromServer.isAlive())
-        {
+        if (!readFromServer.isAlive()) {
+            connection = false;
             outSocket.close();
             inSocket.close();
             userInputReader.close();
             socket.close();
         }
-    } }
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void write(String userInput)
+    {
+        Thread writeToServer = new Thread(() -> {
+            outSocket.println(userInput);
+        });
+        writeToServer.start();
+    }
+
+
+}

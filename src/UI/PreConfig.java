@@ -2,6 +2,7 @@ package UI;
 
 import PeerToPeer.Client;
 import PeerToPeer.Server;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,10 +14,14 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class PreConfig extends VBox {
 
     Stage startStage = new Stage();
+    Client c = null;
+    Server s = null;
+    boolean connectionBoolean = false;
 
     public PreConfig()
     {
@@ -40,7 +45,8 @@ public class PreConfig extends VBox {
 
             submit.setOnAction(event1 -> {
                 try {
-                    new Client(ip.getText(),Integer.parseInt(port.getText()));
+                    c = new Client(ip.getText(),Integer.parseInt(port.getText()));
+                    connection(c.getSocket());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -58,7 +64,8 @@ public class PreConfig extends VBox {
 
             submit.setOnAction(event1 -> {
                 try {
-                    new Server(Integer.parseInt(port.getText()));
+                    s = new Server(Integer.parseInt(port.getText()));
+                    connection(s.getSocket());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -66,5 +73,35 @@ public class PreConfig extends VBox {
 
         });
 
+
+
+
     }
+
+    public void connection(Socket socket)
+    {
+        Thread connectionTest = new Thread(()->{
+            while(true){
+                if(socket.isConnected())
+                {
+                    Platform.runLater(()->startStage.close());
+                    connectionBoolean = true;
+                }
+            }
+        });
+        connectionTest.start();
+    }
+
+    public boolean isConnectedBoolean() {
+        return connectionBoolean;
+    }
+
+    public Client getClient() {
+        return c;
+    }
+
+    public Server getServer() {
+        return s;
+    }
+
 }
