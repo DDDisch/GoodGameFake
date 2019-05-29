@@ -35,30 +35,35 @@ public class woodFarm extends ImageView {
 
     private void nextLevel(double wood, double stone) {
         if (level < 3) {
-            if(level == 1) {
+            if (level == 1) {
                 woodCost *= 2;
                 stoneCost = 300;
                 generate *= 3;
-                level ++;
+                level = level + 1;
             } else {
                 woodCost *= 2;
                 stoneCost *= 2;
                 generate *= 3;
-                level++;
+                level = level + 1;
             }
-        }
 
-        if(wood >= woodCost && stone >= stoneCost) {
-            Main.wood.setValue(wood-woodCost);
-            Main.stone.setValue(stone-stoneCost);
-            System.out.println(Main.wood.getValue());
-            if(level == 2) {
-                this.setImage(new Image("images.buildings/wood/Wood2.png"));
-            } else if(level == 3) {
-                this.setImage(new Image("images.buildings/wood/Wood3.png"));
+            if (wood >= woodCost && stone >= stoneCost) {
+                Main.wood.setValue(wood - woodCost);
+                Main.stone.setValue(stone - stoneCost);
+                if (level == 2) {
+                    this.setImage(new Image("images.buildings/wood/Wood2.png"));
+                }
+                if (level == 3) {
+                    this.setImage(new Image("images.buildings/wood/Wood3.png"));
+                }
+            } else {
+                level--;
+                generate = generate/3;
+                woodCost /= 2;
+                if(level != 1) {
+                    stoneCost /= 2;
+                }
             }
-        } else {
-            level--;
         }
     }
 }

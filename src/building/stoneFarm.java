@@ -50,6 +50,11 @@ public class stoneFarm extends ImageView {
             }
         } else {
             level--;
+            generate = generate/3;
+            woodCost /= 2;
+            if(level != 1) {
+                stoneCost /= 2;
+            }
         }
     }
 }

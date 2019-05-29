@@ -32,7 +32,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
-        grid.generateGrid(root, 500,50,50, primaryStage);
+        new grid().generateGrid(root, 500,50,50, primaryStage);
         menuRight = new MenuRight(primaryStage);
         primaryStage.setTitle("Strategy Game");
         primaryStage.setScene(new Scene(root, 600, 600));
