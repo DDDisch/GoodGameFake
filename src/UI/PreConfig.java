@@ -86,6 +86,7 @@ public class PreConfig extends VBox {
                 {
                     Platform.runLater(()->startStage.close());
                     connectionBoolean = true;
+                    break;
                 }
             }
         });

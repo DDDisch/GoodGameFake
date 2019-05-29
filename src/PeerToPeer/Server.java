@@ -1,5 +1,7 @@
 package PeerToPeer;
 
+import sample.Main;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,10 +37,7 @@ public class Server
                         System.out.println(input);
 
 
-
                     //Calculation or Registration of Attack
-
-
 
 
                     }

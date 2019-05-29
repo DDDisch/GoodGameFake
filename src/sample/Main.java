@@ -25,7 +25,7 @@ public class Main extends Application {
     public static SimpleDoubleProperty stone = new SimpleDoubleProperty();
     public static SimpleDoubleProperty food = new SimpleDoubleProperty();
     public static SimpleDoubleProperty money = new SimpleDoubleProperty();
-    PreConfig preConfig;
+    static PreConfig preConfig;
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
 
@@ -74,12 +74,13 @@ public class Main extends Application {
         soldierBuild.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 )));
     }
 
-    public void write(String input)
+    static public void write(String input)
     {
         Thread t = new Thread(()->{
-            while(!preConfig.isConnectedBoolean()) {}
-            if (preConfig.isConnectedBoolean())
-            {
+
+            while(!preConfig.isConnectedBoolean()) {
+                System.out.print("");
+            }
                 if(preConfig.getServer() != null)
                 {
                     preConfig.getServer().write(input);
@@ -89,11 +90,6 @@ public class Main extends Application {
                 {
                     preConfig.getClient().write(input);
                 }
-            }
-            else
-            {
-                System.out.println("Could not write content. No connection found.");
-            }
         });
         t.start();
 
