@@ -124,6 +124,7 @@ public class grid implements EventHandler<MouseEvent> {
                 w = null;
                 System.gc();
             }
+            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -139,6 +140,7 @@ public class grid implements EventHandler<MouseEvent> {
                 w = null;
                 System.gc();
             }
+            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -154,6 +156,7 @@ public class grid implements EventHandler<MouseEvent> {
                 w = null;
                 System.gc();
             }
+            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -169,6 +172,7 @@ public class grid implements EventHandler<MouseEvent> {
                 w = null;
                 System.gc();
             }
+            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 

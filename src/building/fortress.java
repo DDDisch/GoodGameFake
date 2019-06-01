@@ -6,6 +6,7 @@ import sample.Main;
 
 public class fortress extends ImageView {
     private int level = 1;
+    private int defeneseLevel=30;
     private Image image;
     private double woodCost=1000, stoneCost=500;
 
@@ -21,6 +22,7 @@ public class fortress extends ImageView {
         if (level < 3) {
             woodCost *= 2;
             stoneCost *= 2;
+            defeneseLevel *= 0.5;
             level++;
         }
 
@@ -34,6 +36,11 @@ public class fortress extends ImageView {
             }
         } else {
             level--;
+            if(level == 2) {
+                woodCost /= 2;
+                stoneCost /= 2;
+                defeneseLevel /= 0.5;
+            }
         }
     }
 }
