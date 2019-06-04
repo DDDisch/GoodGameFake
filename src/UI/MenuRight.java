@@ -1,5 +1,6 @@
 package UI;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
@@ -64,7 +65,7 @@ public class MenuRight extends VBox {
             initSlider(crossbow);
 
 
-            Button recruteNew = new Button("Soldaten ausbilden!");
+            Button recruteNew = new Button("Soldaten ausbilden! (Max 10 pro Typ)");
 
             GridPane.setConstraints(soldier, 0,0,2,1);
             GridPane.setConstraints(ivSword, 0,1);
@@ -76,6 +77,7 @@ public class MenuRight extends VBox {
             GridPane.setConstraints(bow, 1,3);
             GridPane.setConstraints(crossbow, 1,4);
             GridPane.setConstraints(recruteNew, 0,5, 2, 1);
+            GridPane.setHalignment(recruteNew, HPos.CENTER);
 
             root.getChildren().addAll(soldier, ivSword, ivSpear, ivBow, ivCrossbow, sword, spear, bow, crossbow, recruteNew);
 
@@ -92,6 +94,7 @@ public class MenuRight extends VBox {
                 if(crossbow.getValue() > 0) {
                     Main.crossbow.build((int)crossbow.getValue());
                 }
+                dialog.hide();
             });
         }
         root.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -99,10 +102,13 @@ public class MenuRight extends VBox {
     }
 
     private void initSlider(Slider tmp) {
-        tmp.setMax(100);
+        tmp.setMax(10);
         tmp.setMin(0);
         tmp.setSnapToTicks(true);
-        tmp.setMinorTickCount(1);
+        tmp.setShowTickLabels(true);
+        tmp.setMinorTickCount(0);
+        tmp.setBlockIncrement(1);
+        tmp.setMajorTickUnit(1.0);
     }
 
     public VBox getVbox() {

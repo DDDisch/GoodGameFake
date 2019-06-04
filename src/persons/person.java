@@ -23,7 +23,8 @@ public class person extends ImageView {
     //@MICHI IGNORE
     public void build(int count) {
         if(Main.food.getValue() > (foodCost * count)) {
-            this.count.add(count);
+            this.count.setValue(this.count.getValue() + count);
+            Main.food.setValue(Main.food.getValue() - foodCost*count);
         }
     }
 
