@@ -1,5 +1,7 @@
 package PeerToPeer;
 
+import sample.Main;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,10 +29,32 @@ public class Client {
                 while ((input = inSocket.readLine()) != null) {
                     System.out.println(input);
 
+                    String type = input.substring(0,1);
+                    input = input.substring(1);
+                    if(type.equals("!")) {
+                        int attackPower = Integer.parseInt(input);
+                        int defPower;
+                        defPower = Main.sword.calcDefenseAll();
+                        defPower = Main.spear.calcDefenseAll() + defPower;
+                        defPower = Main.bow.calcDefenseAll() + defPower;
+                        defPower = Main.crossbow.calcDefenseAll() + defPower;
 
-                    //Calculation or Registration of Attack
+                        Main.write("-"+(defPower-attackPower));
+                    }
 
+                    if (type.equals("-"))
+                    {
+                            int erg = Integer.parseInt(input);
 
+                            if (erg < 0)
+                            {
+                                System.out.println("Winner");
+                            }
+                            else
+                            {
+                                System.out.println("Lost Battle");
+                            }
+                    }
 
                 }
             } catch (UnknownHostException e) {

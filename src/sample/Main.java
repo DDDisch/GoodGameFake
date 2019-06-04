@@ -67,7 +67,6 @@ public class Main extends Application {
         root.setTop(statusBar.getHbox());
         preConfig = new PreConfig();
 
-       write("Disch");
 
     }
 

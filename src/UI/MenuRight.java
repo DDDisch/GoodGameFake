@@ -2,6 +2,7 @@ package UI;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
@@ -46,7 +47,50 @@ public class MenuRight extends VBox {
         if(mode == 3) {
             //@MICHI YOUR CODE GOES HERE
             Text text = new Text("Welche Truppen sollen Angreife");
-            root.getChildren().add(text);
+
+            Slider swordSlider = new Slider();
+            Slider crossbowSlider = new Slider();
+            Slider bowSlider = new Slider();
+            Slider spearSlider = new Slider();
+
+
+            initSlider(crossbowSlider);
+            initSlider(bowSlider);
+            initSlider(spearSlider);
+            initSlider(swordSlider);
+
+            swordSlider.setMax(Main.sword.getCountInteger());
+            crossbowSlider.setMax(Main.crossbow.getCountInteger());
+            bowSlider.setMax(Main.bow.getCountInteger());
+            spearSlider.setMax(Main.spear.getCountInteger());
+
+
+            Button attack = new Button("Attack!");
+
+            attack.setOnAction(event -> {
+
+                int attackPower;
+
+                attackPower = Main.sword.calcAttack((int)swordSlider.getValue());
+                attackPower = Main.bow.calcAttack((int)bowSlider.getValue()) + attackPower;
+                attackPower = Main.crossbow.calcAttack((int)crossbowSlider.getValue()) + attackPower;
+                attackPower = Main.spear.calcAttack((int)spearSlider.getValue()) + attackPower;
+
+                Main.write("!"+attackPower);
+
+                Main.sword.decreaseCount((int)swordSlider.getValue());
+                Main.crossbow.decreaseCount((int)crossbowSlider.getValue());
+                Main.bow.decreaseCount((int)bowSlider.getValue());
+                Main.spear.decreaseCount((int)spearSlider.getValue());
+
+                dialog.hide();
+
+            });
+
+            VBox attackSlider = new VBox();
+            attackSlider.getChildren().addAll(text,swordSlider,spearSlider,bowSlider,crossbowSlider,attack);
+            root.getChildren().add(attackSlider);
+
         } else if(mode == 2) {
             Text soldier = new Text("Übersicht über deine Soldaten und neue zum Ausbilden");
 

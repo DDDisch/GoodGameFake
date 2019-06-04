@@ -33,6 +33,15 @@ public class person extends ImageView {
         return this.count;
     }
 
+    public int getCountInteger() {
+        return this.count.getValue();
+    }
+
+    public void decreaseCount(int decrease)
+    {
+        this.count.setValue(this.count.getValue()-decrease);
+    }
+
     //Calculate Attack value of All Units of the Type
     public int calcAttackAll() {
         return attack*this.count.getValue();
