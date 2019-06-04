@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import map.grid;
+import persons.person;
 
 public class Main extends Application {
     MenuRight menuRight;
@@ -26,6 +27,13 @@ public class Main extends Application {
     public static SimpleDoubleProperty food = new SimpleDoubleProperty();
     public static SimpleDoubleProperty money = new SimpleDoubleProperty();
     static PreConfig preConfig;
+
+    //IMAGES ARE CURRENTLY NOT USED CAUSE I HAVE NOT FOUND ONE IN THE RIGHT STYLE AND ARE TO LARGE JUST FOR LATER INTEGRATION INCLUDED
+    //ARE STATIC TO ACCESS THEM IN OTHER CLASSES TO CHANGE THE VALUES
+    public static person sword = new person(new Image("images/icon/sword.png"), 2,3,75);
+    public static person spear = new person(new Image("images/icon/sword.png"), 10,5,125);
+    public static person bow = new person(new Image("images/icon/sword.png"), 5,15,175);
+    public static person crossbow = new person(new Image("images/icon/sword.png"), 12,12,175);
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
 
@@ -45,6 +53,7 @@ public class Main extends Application {
             }
         });
 
+        //CHANGE THE FUNCTION OF THE BUTTON IN THE MENU RIGHT CLASS (AREA IS MARKED WITH AN COMMENTARY)
         menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
 
         addListener();
