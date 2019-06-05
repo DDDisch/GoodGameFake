@@ -59,7 +59,7 @@ public class Main extends Application {
 
         addListener();
 
-        wood.set(500);
+        wood.set(1500);
         stone.set(200);
         money.set(1000);
         food.set(1000);

@@ -1,10 +1,13 @@
 package UI;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -18,6 +21,11 @@ public class MenuRight extends VBox {
 
     private Stage primaryStage;
     public int attackPower;
+    int stoneNum, woodNum, foodNum;
+    int stoneCost = 8;
+    int woodCost = 5;
+    int foodCost = 15;
+
 
     public MenuRight(Stage primaryStage) {
         super();
@@ -166,6 +174,75 @@ public class MenuRight extends VBox {
             });
         } else if(mode == 4) {
             //Buy Resource Pop Up goes here
+
+
+            VBox buying = new VBox();
+
+
+
+            HBox food = new HBox();
+            Text typeFood = new Text("Food: ");
+            TextField foodField = new TextField("0");
+            Text foodText = new Text(" --> " + 0 + " Gold");
+            food.getChildren().addAll(typeFood, foodField,foodText);
+
+            HBox wood = new HBox();
+            Text typeWood = new Text("Wood: ");
+            TextField woodField = new TextField("0");
+            Text woodText = new Text(" --> " + 0 + " Gold");
+            wood.getChildren().addAll(typeWood, woodField, woodText);
+
+            HBox stone = new HBox();
+            Text typeStone = new Text("Stone ");
+            TextField stoneField = new TextField("0");
+            Text stoneText = new Text(" --> " + 0 + " Gold");
+            stone.getChildren().addAll(typeStone, stoneField,stoneText);
+
+            Button buyResource = new Button("Buy!");
+
+            buying.getChildren().addAll(food, wood, stone,buyResource);
+            root.getChildren().add(buying);
+
+            foodField.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    foodNum = Integer.parseInt(foodField.getText());
+                    foodText.setText("-->" + (foodNum*foodCost) + "Gold");
+                }
+            });
+
+            woodField.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    woodNum = Integer.parseInt(woodField.getText());
+                    woodText.setText("-->" + (woodNum*woodCost) + "Gold");
+                }
+            });
+
+            stoneField.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    stoneNum = Integer.parseInt(stoneField.getText());
+                    stoneText.setText("-->" + (stoneNum*stoneCost) + "Gold");
+                }
+            });
+
+            buyResource.setOnAction(event -> {
+                int cost = (stoneNum * stoneCost) + (woodNum * woodCost) + (foodNum * foodCost);
+
+                Main.money.set(Main.money.getValue() - cost);
+                Main.wood.set(Main.wood.getValue() + woodNum);
+                Main.food.set(Main.food.getValue() + foodNum);
+                Main.stone.set(Main.stone.getValue() + stoneNum);
+
+
+                woodField.setText("0");
+                stoneField.setText("0");
+                foodField.setText("0");
+
+            });
+
+
         }
 
         root.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
