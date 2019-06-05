@@ -164,6 +164,8 @@ public class MenuRight extends VBox {
                 }
                 dialog.hide();
             });
+        } else if(mode == 4) {
+            //Buy Resource Pop Up goes here
         }
 
         root.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));

@@ -43,6 +43,7 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         new grid().generateGrid(root, 500,50,50, primaryStage);
         menuRight = new MenuRight(primaryStage);
+        menuRight.createMenuItem("Buy Ressources", 4);
         primaryStage.setTitle("Strategy Game");
         primaryStage.setScene(new Scene(root, 750, 600));
         primaryStage.setResizable(false);
