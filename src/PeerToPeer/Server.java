@@ -72,7 +72,6 @@ public class Server
                             {
                                 Platform.runLater(()->{
                                     Log.addLogEvent("Lost Battle");
-                                    WinLosStage.createStage(false);
                                     Main.write("?"+erg);
                                 });
                             }
@@ -91,6 +90,7 @@ public class Server
                         {
                             Platform.runLater(()->{
                                 Log.addLogEvent("You Lost");
+                                WinLosStage.createStage(false);
                             });
                         }
 

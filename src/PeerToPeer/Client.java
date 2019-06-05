@@ -69,7 +69,6 @@ public class Client {
                         {
                             Platform.runLater(()->{
                                 Log.addLogEvent("Lost Battle");
-                                WinLosStage.createStage(false);
                             });
                             Main.write("?"+attackPower);
                         }
@@ -88,6 +87,7 @@ public class Client {
                     {
                         Platform.runLater(()->{
                             Log.addLogEvent("You Lost");
+                            WinLosStage.createStage(false);
                         });
                     }
 
