@@ -1,6 +1,7 @@
 package PeerToPeer;
 
 import UI.Log;
+import javafx.application.Platform;
 import sample.Main;
 
 import java.io.BufferedReader;
@@ -18,6 +19,8 @@ public class Server
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
     static BufferedReader userInputReader;
+    int defPower = 30;
+
 
     public Server(int port) throws IOException {
 
@@ -40,14 +43,15 @@ public class Server
                         input = input.substring(1);
                         if(type.equals("!")) {
                             int attackPower = Integer.parseInt(input);
-                            int defPower = 30;
                             defPower = Main.sword.calcDefenseAll() + defPower;
                             defPower = Main.spear.calcDefenseAll() + defPower;
                             defPower = Main.bow.calcDefenseAll() + defPower;
                             defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                             Main.write("-"+(defPower-attackPower));
-                            Log.addLogEvent("Attack Result: " + (defPower-attackPower));
+                            Platform.runLater(()->{
+                                Log.addLogEvent("Attack Result: " + (defPower-attackPower));
+                            });
                         }
 
                         if (type.equals("-"))
@@ -56,11 +60,15 @@ public class Server
 
                             if (erg < 0)
                             {
-                                Log.addLogEvent("Winner");
+                                Platform.runLater(()-> {
+                                    Log.addLogEvent("Winner");
+                                });
                             }
                             else
                             {
-                                Log.addLogEvent("Lost Battle");
+                                Platform.runLater(()->{
+                                    Log.addLogEvent("Lost Battle");
+                                });
                             }
                         }
 
