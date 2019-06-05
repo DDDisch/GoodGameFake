@@ -72,6 +72,15 @@ public class Server
                             }
                         }
 
+                        if(type.equals("?")) {
+                            int attackPower = Integer.parseInt(input);
+
+                            Main.sword.decreaseCount(attackPower/3);
+                            Main.spear.decreaseCount(attackPower/3);
+                            Main.bow.decreaseCount(attackPower/3);
+                            Main.crossbow.decreaseCount(attackPower/3);
+                        }
+
                     }
                 } catch (UnknownHostException e) {
                     System.exit(1);

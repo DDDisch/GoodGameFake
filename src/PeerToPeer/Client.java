@@ -43,6 +43,7 @@ public class Client {
                         defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                         Main.write("-"+(defPower-attackPower));
+
                         Platform.runLater(()->{
                             Log.addLogEvent("Attack Result: " + (attackPower));
                         });
@@ -50,20 +51,31 @@ public class Client {
 
                     if (type.equals("-"))
                     {
-                            int erg = Integer.parseInt(input);
+                        int attackPower = Integer.parseInt(input);
+                        int erg = Integer.parseInt(input);
 
-                            if (erg < 0)
-                            {
-                                Platform.runLater(()-> {
-                                    Log.addLogEvent("Winner");
-                                });
-                            }
-                            else
-                            {
-                                Platform.runLater(()->{
-                                    Log.addLogEvent("Lost Battle");
-                                });
-                            }
+                        if (erg < 0)
+                        {
+                            Platform.runLater(()-> {
+                                Log.addLogEvent("Winner");
+                            });
+                        }
+                        else
+                        {
+                            Platform.runLater(()->{
+                                Log.addLogEvent("Lost Battle");
+                                Main.write("?"+attackPower);
+                            });
+                        }
+                    }
+
+                    if(type.equals("?")) {
+                        int attackPower = Integer.parseInt(input);
+
+                        Main.sword.decreaseCount(attackPower/3);
+                        Main.spear.decreaseCount(attackPower/3);
+                        Main.bow.decreaseCount(attackPower/3);
+                        Main.crossbow.decreaseCount(attackPower/3);
                     }
 
                 }
