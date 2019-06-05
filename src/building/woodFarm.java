@@ -29,7 +29,7 @@ public class woodFarm extends ImageView {
         }
 
 
-        this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
+        this.setOnMousePressed(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
     private void nextLevel(double wood, double stone) {
