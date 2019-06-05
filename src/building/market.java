@@ -17,30 +17,5 @@ public class market extends ImageView {
             Main.stone.setValue(Main.stone.getValue() - stoneCost);
             Main.buyResources.set(true);
         }
-        this.setOnMousePressed(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
-    }
-
-    private void nextLevel(double wood, double stone) {
-        if (level < 3) {
-            woodCost *= 2;
-            stoneCost *= 2;
-            level++;
-        }
-
-        if(wood >= woodCost && stone >= stoneCost) {
-            Main.wood.setValue(wood-woodCost);
-            Main.stone.setValue(stone-stoneCost);
-            if(level == 2) {
-                this.setImage(new Image("images.buildings/market/Market2.png"));
-            } else if(level == 3) {
-                this.setImage(new Image("images.buildings/market/Market3.png"));
-            }
-        } else {
-            level--;
-            woodCost /= 2;
-            if(level != 1) {
-                stoneCost /= 2;
-            }
-        }
     }
 }
