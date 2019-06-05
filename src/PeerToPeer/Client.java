@@ -33,8 +33,8 @@ public class Client {
                     input = input.substring(1);
                     if(type.equals("!")) {
                         int attackPower = Integer.parseInt(input);
-                        int defPower;
-                        defPower = Main.sword.calcDefenseAll();
+                        int defPower = 30;
+                        defPower = Main.sword.calcDefenseAll() + defPower;
                         defPower = Main.spear.calcDefenseAll() + defPower;
                         defPower = Main.bow.calcDefenseAll() + defPower;
                         defPower = Main.crossbow.calcDefenseAll() + defPower;

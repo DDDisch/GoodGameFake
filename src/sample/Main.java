@@ -30,10 +30,10 @@ public class Main extends Application {
 
     //IMAGES ARE CURRENTLY NOT USED CAUSE I HAVE NOT FOUND ONE IN THE RIGHT STYLE AND ARE TO LARGE JUST FOR LATER INTEGRATION INCLUDED
     //ARE STATIC TO ACCESS THEM IN OTHER CLASSES TO CHANGE THE VALUES
-    public static person sword = new person(new Image("images/icon/sword.png"), 7,5,75);
-    public static person spear = new person(new Image("images/icon/sword.png"), 9,6,125);
-    public static person bow = new person(new Image("images/icon/sword.png"), 10,20,175);
-    public static person crossbow = new person(new Image("images/icon/sword.png"), 8,8,175);
+    public static person sword = new person(new Image("images/icon/sword.png"), 5,4,75);
+    public static person spear = new person(new Image("images/icon/sword.png"), 8,5,125);
+    public static person bow = new person(new Image("images/icon/sword.png"), 7,7,150);
+    public static person crossbow = new person(new Image("images/icon/sword.png"), 8,6,175);
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
 
@@ -43,7 +43,7 @@ public class Main extends Application {
         new grid().generateGrid(root, 500,50,50, primaryStage);
         menuRight = new MenuRight(primaryStage);
         primaryStage.setTitle("Strategy Game");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 750, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
 
@@ -58,10 +58,10 @@ public class Main extends Application {
 
         addListener();
 
-        wood.set(1000);
-        stone.set(1000);
+        wood.set(500);
+        stone.set(200);
         money.set(1000);
-        food.set(1000);
+        food.set(300);
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());

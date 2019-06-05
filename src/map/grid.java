@@ -49,6 +49,7 @@ public class grid implements EventHandler<MouseEvent> {
                     w.setX(rect.getX());
                     w.setY(rect.getY());
                     root.getChildren().add(w);
+                    rect.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
                 }
 
                 c++;
@@ -120,11 +121,11 @@ public class grid implements EventHandler<MouseEvent> {
                 w.setX(iv.getX());
                 w.setY(iv.getY());
                 root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             } else {
                 w = null;
                 System.gc();
             }
-            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -136,11 +137,11 @@ public class grid implements EventHandler<MouseEvent> {
                 w.setX(iv.getX());
                 w.setY(iv.getY());
                 root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             } else {
                 w = null;
                 System.gc();
             }
-            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -152,11 +153,11 @@ public class grid implements EventHandler<MouseEvent> {
                 w.setX(iv.getX());
                 w.setY(iv.getY());
                 root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             } else {
                 w = null;
                 System.gc();
             }
-            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -168,11 +169,11 @@ public class grid implements EventHandler<MouseEvent> {
                 w.setX(iv.getX());
                 w.setY(iv.getY());
                 root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             } else {
                 w = null;
                 System.gc();
             }
-            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
 
@@ -184,12 +185,11 @@ public class grid implements EventHandler<MouseEvent> {
                 w.setX(iv.getX());
                 w.setY(iv.getY());
                 root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             } else {
                 w = null;
                 System.gc();
             }
-
-            iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
             dialog.hide();
         });
     }

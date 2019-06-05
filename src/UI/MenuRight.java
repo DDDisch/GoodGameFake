@@ -17,10 +17,33 @@ import sample.Main;
 public class MenuRight extends VBox {
 
     private Stage primaryStage;
+    private int defPower = 30;
 
     public MenuRight(Stage primaryStage) {
         super();
         this.primaryStage = primaryStage;
+
+        defPower = Main.sword.calcDefenseAll() + defPower;
+        defPower = Main.spear.calcDefenseAll() + defPower;
+        defPower = Main.bow.calcDefenseAll() + defPower;
+        defPower = Main.crossbow.calcDefenseAll() + defPower;
+
+        int attackPower;
+        attackPower = Main.sword.calcAttackAll();
+        attackPower = Main.bow.calcAttackAll() + attackPower;
+        attackPower = Main.crossbow.calcAttackAll() + attackPower;
+        attackPower = Main.spear.calcAttackAll() + attackPower;
+
+        VBox vbox = new VBox();
+        vbox.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        Text sword = new Text("Sword Atk: " + Main.sword.attack + " Sword Def: " + Main.sword.defense);
+        Text spear = new Text("Spear Atk: " + Main.spear.attack + " Spear Def: " + Main.spear.defense);
+        Text bow = new Text("Bow Atk: " + Main.bow.attack + " Bow Def: " + Main.bow.defense);
+        Text crossbow = new Text("Crossbow Atk: " + Main.crossbow.attack + " Crossbow Def: " + Main.crossbow.defense);
+        Text all = new Text("Atk: " + attackPower + " Def: " + defPower);
+        vbox.getChildren().addAll(sword, spear, bow, crossbow, all);
+
+        this.getChildren().add(vbox);
     }
 
     public void createMenuItem(String title,int mode) {

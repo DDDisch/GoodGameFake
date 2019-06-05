@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import sample.Main;
 
 public class person extends ImageView {
-    private int attack, defense;
+    public int attack, defense;
     private Image image;
     private SimpleIntegerProperty count = new SimpleIntegerProperty(0);
     private int foodCost;
@@ -52,6 +52,6 @@ public class person extends ImageView {
     }
 
     public int calcDefenseAll() {
-        return defense*count.getValue()+30; //30 for King in the Tower not raised by Leveling up the Tower which is possible at the current state of dev. but has no purpose
+        return defense*count.getValue();
     }
 }

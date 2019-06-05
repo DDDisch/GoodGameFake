@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class foodFarm extends ImageView {
-    private double generate = 0.5;
+    private double generate = 1;
     private int level = 1;
     private Image image;
     private double woodCost=150, stoneCost=50;
