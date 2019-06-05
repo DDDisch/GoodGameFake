@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Client {
+
     static Socket socket = null;
     static PrintWriter outSocket = null;
     static BufferedReader inSocket = null;
