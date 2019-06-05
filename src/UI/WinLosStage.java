@@ -1,6 +1,5 @@
 package UI;
 
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +12,7 @@ public class WinLosStage {
     public static void createStage(Boolean win) {
         Text text;
         BorderPane borderPane = new BorderPane();
-        Scene scene = new Scene(borderPane, 800, 200);
+        Scene scene = new Scene(borderPane, 800, 120);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Ending");

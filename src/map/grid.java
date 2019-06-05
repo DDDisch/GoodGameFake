@@ -102,7 +102,7 @@ public class grid implements EventHandler<MouseEvent> {
         Button stone = new Button("Steinbruch", stoneIV);
         Button food = new Button("Bauernhof", foodIV);
         Button soldier = new Button("Kaserne", soldierIV);
-        Button house = new Button("Wohnhaus", houseIV);
+        Button house = new Button("Gold", houseIV);
         Button market = new Button("Markt", marketIV);
 
         Text woodInfo = new Text("Building Cost: 150 Wood");
