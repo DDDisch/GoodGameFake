@@ -41,6 +41,7 @@ public class Server
 
                         String type = input.substring(0,1);
                         input = input.substring(1);
+
                         if(type.equals("!")) {
                             int attackPower = Integer.parseInt(input);
                             defPower = Main.sword.calcDefenseAll() + defPower;
@@ -50,7 +51,7 @@ public class Server
 
                             Main.write("-"+(defPower-attackPower));
                             Platform.runLater(()->{
-                                Log.addLogEvent("Attack Result: " + (attackPower));
+                                Log.addLogEvent("You got attack with: " + (attackPower));
                             });
                         }
 
@@ -63,6 +64,7 @@ public class Server
                                 Platform.runLater(()-> {
                                     Log.addLogEvent("Winner");
                                 });
+                                Main.write("$Lost");
                             }
                             else
                             {
@@ -70,6 +72,13 @@ public class Server
                                     Log.addLogEvent("Lost Battle");
                                 });
                             }
+                        }
+
+                        if(type.equals("$"))
+                        {
+                            Platform.runLater(()->{
+                                Log.addLogEvent("You Lost");
+                            });
                         }
 
                     }

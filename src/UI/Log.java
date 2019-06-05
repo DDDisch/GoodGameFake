@@ -10,7 +10,7 @@ public class Log {
 
     Stage log = new Stage();
     Group root = new Group();
-    Scene scene = new Scene(root,200,600);
+    Scene scene = new Scene(root,250,600);
     static VBox logEvents;
 
     public Log()

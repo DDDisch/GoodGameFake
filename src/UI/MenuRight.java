@@ -84,12 +84,15 @@ public class MenuRight extends VBox {
 
             attack.setOnAction(event -> {
 
+
                 attackPower = Main.sword.calcAttack((int)swordSlider.getValue());
                 attackPower = Main.bow.calcAttack((int)bowSlider.getValue()) + attackPower;
                 attackPower = Main.crossbow.calcAttack((int)crossbowSlider.getValue()) + attackPower;
                 attackPower = Main.spear.calcAttack((int)spearSlider.getValue()) + attackPower;
 
                 Main.write("!"+attackPower);
+
+                Log.addLogEvent("You attacked with " + attackPower + " attack power!");
 
                 Main.sword.decreaseCount((int)swordSlider.getValue());
                 Main.crossbow.decreaseCount((int)crossbowSlider.getValue());

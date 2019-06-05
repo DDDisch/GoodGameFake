@@ -35,6 +35,7 @@ public class Client {
 
                     String type = input.substring(0,1);
                     input = input.substring(1);
+
                     if(type.equals("!")) {
                         int attackPower = Integer.parseInt(input);
                         defPower = Main.sword.calcDefenseAll() + defPower;
@@ -44,26 +45,34 @@ public class Client {
 
                         Main.write("-"+(defPower-attackPower));
                         Platform.runLater(()->{
-                            Log.addLogEvent("Attack Result: " + (attackPower));
+                            Log.addLogEvent("You got attack with: " + (attackPower));
                         });
                     }
 
                     if (type.equals("-"))
                     {
-                            int erg = Integer.parseInt(input);
+                        int erg = Integer.parseInt(input);
 
-                            if (erg < 0)
-                            {
-                                Platform.runLater(()-> {
-                                    Log.addLogEvent("Winner");
-                                });
-                            }
-                            else
-                            {
-                                Platform.runLater(()->{
-                                    Log.addLogEvent("Lost Battle");
-                                });
-                            }
+                        if (erg < 0)
+                        {
+                            Platform.runLater(()-> {
+                                Log.addLogEvent("Winner");
+                            });
+                            Main.write("$Lost");
+                        }
+                        else
+                        {
+                            Platform.runLater(()->{
+                                Log.addLogEvent("Lost Battle");
+                            });
+                        }
+                    }
+
+                    if(type.equals("$"))
+                    {
+                        Platform.runLater(()->{
+                            Log.addLogEvent("You Lost");
+                        });
                     }
 
                 }
