@@ -44,7 +44,7 @@ public class Client {
 
                         Main.write("-"+(defPower-attackPower));
                         Platform.runLater(()->{
-                            Log.addLogEvent("Attack Result: " + (defPower-attackPower));
+                            Log.addLogEvent("Attack Result: " + (attackPower));
                         });
                     }
 
