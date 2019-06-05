@@ -75,10 +75,10 @@ public class Client {
                     if(type.equals("?")) {
                         int attackPower = Integer.parseInt(input);
 
-                        Main.sword.decreaseCount(attackPower/3);
-                        Main.spear.decreaseCount(attackPower/3);
-                        Main.bow.decreaseCount(attackPower/3);
-                        Main.crossbow.decreaseCount(attackPower/3);
+                        Main.sword.decreaseCount(attackPower/10/3);
+                        Main.spear.decreaseCount(attackPower/10/3);
+                        Main.bow.decreaseCount(attackPower/10/3);
+                        Main.crossbow.decreaseCount(attackPower/10/3);
                     }
 
                     if(type.equals("$"))
@@ -89,8 +89,6 @@ public class Client {
                     }
 
                 }
-            } catch (UnknownHostException e) {
-                System.exit(1);
             } catch (IOException e) {
                 System.exit(1);
             }

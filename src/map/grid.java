@@ -104,7 +104,7 @@ public class grid implements EventHandler<MouseEvent> {
         Text stoneInfo = new Text("Building Cost: 250 Wood & 100 Stone");
         Text foodInfo = new Text("Building Cost: 150 Wood & 50 Stone");
         Text soldierInfo = new Text("Building Cost: 500 Wood & 200 Stone");
-        Text houseInfo = new Text("Building Cost: 150 Wood");
+        Text houseInfo = new Text("Building Cost: 250 Wood");
 
 
         VBox vbox = new VBox(new HBox(wood, woodInfo), new HBox(stone, stoneInfo), new HBox(food, foodInfo), new HBox(soldier, soldierInfo), new HBox(house, houseInfo));

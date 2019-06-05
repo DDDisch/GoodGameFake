@@ -70,6 +70,7 @@ public class Server
                             {
                                 Platform.runLater(()->{
                                     Log.addLogEvent("Lost Battle");
+                                    Main.write("?"+erg);
                                 });
                             }
                         }
@@ -77,10 +78,10 @@ public class Server
                         if(type.equals("?")) {
                             int attackPower = Integer.parseInt(input);
 
-                            Main.sword.decreaseCount(attackPower/3);
-                            Main.spear.decreaseCount(attackPower/3);
-                            Main.bow.decreaseCount(attackPower/3);
-                            Main.crossbow.decreaseCount(attackPower/3);
+                            Main.sword.decreaseCount(attackPower/10/3);
+                            Main.spear.decreaseCount(attackPower/10/3);
+                            Main.bow.decreaseCount(attackPower/10/3);
+                            Main.crossbow.decreaseCount(attackPower/10/3);
                         }
 
                         if(type.equals("$"))

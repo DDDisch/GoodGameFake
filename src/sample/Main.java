@@ -50,9 +50,6 @@ public class Main extends Application {
 
         new Log();
 
-        //CHANGE THE FUNCTION OF THE BUTTON IN THE MENU RIGHT CLASS (AREA IS MARKED WITH AN COMMENTARY)
-        menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
-
         addListener();
 
         wood.set(500);
@@ -76,7 +73,11 @@ public class Main extends Application {
 
         money.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> statusBar.money.setText("" + (int)Math.round(money.getValue()))));
 
-        soldierBuild.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 )));
+        soldierBuild.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
+            menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 );
+            //CHANGE THE FUNCTION OF THE BUTTON IN THE MENU RIGHT CLASS (AREA IS MARKED WITH AN COMMENTARY)
+            menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
+        }));
     }
 
     static public void write(String input)
