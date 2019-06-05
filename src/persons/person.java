@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import sample.Main;
 
 public class person extends ImageView {
-    int attack, defense;
+    private int attack, defense;
     private Image image;
     private SimpleIntegerProperty count = new SimpleIntegerProperty(0);
     private int foodCost;
@@ -20,7 +20,6 @@ public class person extends ImageView {
     }
 
     //Recrute new Player of the Type with a Count
-    //@MICHI IGNORE
     public void build(int count) {
         if(Main.food.getValue() > (foodCost * count)) {
             this.count.setValue(this.count.getValue() + count);

@@ -45,7 +45,6 @@ public class MenuRight extends VBox {
         dialog.getContent().add(root);
 
         if(mode == 3) {
-            //@MICHI YOUR CODE GOES HERE
             Text text = new Text("Welche Truppen sollen Angreife");
 
             Slider swordSlider = new Slider();
@@ -141,6 +140,7 @@ public class MenuRight extends VBox {
                 dialog.hide();
             });
         }
+
         root.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         dialog.show(primaryStage);
     }

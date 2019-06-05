@@ -30,10 +30,10 @@ public class Main extends Application {
 
     //IMAGES ARE CURRENTLY NOT USED CAUSE I HAVE NOT FOUND ONE IN THE RIGHT STYLE AND ARE TO LARGE JUST FOR LATER INTEGRATION INCLUDED
     //ARE STATIC TO ACCESS THEM IN OTHER CLASSES TO CHANGE THE VALUES
-    public static person sword = new person(new Image("images/icon/sword.png"), 2,3,75);
-    public static person spear = new person(new Image("images/icon/sword.png"), 10,5,125);
-    public static person bow = new person(new Image("images/icon/sword.png"), 5,15,175);
-    public static person crossbow = new person(new Image("images/icon/sword.png"), 12,12,175);
+    public static person sword = new person(new Image("images/icon/sword.png"), 7,5,75);
+    public static person spear = new person(new Image("images/icon/sword.png"), 9,6,125);
+    public static person bow = new person(new Image("images/icon/sword.png"), 10,20,175);
+    public static person crossbow = new person(new Image("images/icon/sword.png"), 8,8,175);
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
 

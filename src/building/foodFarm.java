@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class foodFarm extends ImageView {
-    private double generate = 0.3;
+    private double generate = 0.5;
     private int level = 1;
     private Image image;
     private double woodCost=150, stoneCost=50;
@@ -20,14 +20,13 @@ public class foodFarm extends ImageView {
             this.setImage(new Image("images.buildings/food/Farm1.png"));
             Main.wood.setValue(Main.wood.getValue() - woodCost);
             Main.stone.setValue(Main.stone.getValue() - stoneCost);
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Main.food.setValue(Main.food.getValue()+generate);
+                }
+            }, 1000,1000);
         }
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Main.food.setValue(Main.food.getValue()+generate);
-            }
-        }, 1000,1000);
 
         this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
