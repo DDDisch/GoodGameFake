@@ -78,6 +78,7 @@ public class grid implements EventHandler<MouseEvent> {
         ImageView foodIV = new ImageView(new Image("images.buildings/food/Farm1.png"));
         ImageView soldierIV = new ImageView(new Image("images.buildings/soldier/Barracks1.png"));
         ImageView houseIV = new ImageView(new Image("images.buildings/house/Garage1.png"));
+        ImageView marketIV = new ImageView(new Image("images.buildings/market/Market1.png"));
 
         woodIV.setFitHeight(20);
         woodIV.setPreserveRatio(true);
@@ -94,20 +95,25 @@ public class grid implements EventHandler<MouseEvent> {
         houseIV.setFitHeight(20);
         houseIV.setPreserveRatio(true);
 
+        marketIV.setFitHeight(20);
+        marketIV.setPreserveRatio(true);
+
         Button wood = new Button("Holzfäller", woodIV);
         Button stone = new Button("Steinbruch", stoneIV);
         Button food = new Button("Bauernhof", foodIV);
         Button soldier = new Button("Kaserne", soldierIV);
         Button house = new Button("Wohnhaus", houseIV);
+        Button market = new Button("Markt", marketIV);
 
         Text woodInfo = new Text("Building Cost: 150 Wood");
         Text stoneInfo = new Text("Building Cost: 250 Wood & 100 Stone");
         Text foodInfo = new Text("Building Cost: 150 Wood & 50 Stone");
         Text soldierInfo = new Text("Building Cost: 500 Wood & 200 Stone");
         Text houseInfo = new Text("Building Cost: 250 Wood");
+        Text marketInfo = new Text("Building Cost: 300 Wood & 200 Stone");
 
 
-        VBox vbox = new VBox(new HBox(wood, woodInfo), new HBox(stone, stoneInfo), new HBox(food, foodInfo), new HBox(soldier, soldierInfo), new HBox(house, houseInfo));
+        VBox vbox = new VBox(new HBox(wood, woodInfo), new HBox(stone, stoneInfo), new HBox(food, foodInfo), new HBox(soldier, soldierInfo), new HBox(house, houseInfo), new HBox(market, marketInfo));
 
         root2.getChildren().add(vbox);
 
@@ -179,6 +185,22 @@ public class grid implements EventHandler<MouseEvent> {
 
         house.setOnAction(j -> {
             house w = new house();
+            if (w.getImage() != null) {
+                w.setFitHeight(iv.getFitHeight());
+                w.setFitWidth(iv.getFitWidth());
+                w.setX(iv.getX());
+                w.setY(iv.getY());
+                root.getChildren().add(w);
+                iv.removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
+            } else {
+                w = null;
+                System.gc();
+            }
+            dialog.hide();
+        });
+
+        market.setOnAction(j -> {
+            market w = new market();
             if (w.getImage() != null) {
                 w.setFitHeight(iv.getFitHeight());
                 w.setFitWidth(iv.getFitWidth());

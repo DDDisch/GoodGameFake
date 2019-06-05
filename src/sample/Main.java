@@ -37,13 +37,13 @@ public class Main extends Application {
     public static person crossbow = new person(new Image("images/icon/sword.png"), 8,6,175);
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
+    public static SimpleBooleanProperty buyResources = new SimpleBooleanProperty(false);
 
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
         new grid().generateGrid(root, 500,50,50, primaryStage);
         menuRight = new MenuRight(primaryStage);
-        menuRight.createMenuItem("Buy Ressources", 4);
         primaryStage.setTitle("Strategy Game");
         primaryStage.setScene(new Scene(root, 750, 600));
         primaryStage.setResizable(false);
@@ -78,6 +78,10 @@ public class Main extends Application {
             menuRight.createMenuItem("Soldier",new Image("images/icon/helmet.png"), 2 );
             //CHANGE THE FUNCTION OF THE BUTTON IN THE MENU RIGHT CLASS (AREA IS MARKED WITH AN COMMENTARY)
             menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
+        }));
+
+        buyResources.addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
+            menuRight.createMenuItem("Buy Ressources", 4);
         }));
     }
 
