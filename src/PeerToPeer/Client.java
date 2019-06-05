@@ -1,6 +1,7 @@
 package PeerToPeer;
 
 import UI.Log;
+import UI.WinLosStage;
 import javafx.application.Platform;
 import sample.Main;
 
@@ -59,6 +60,7 @@ public class Client {
                         {
                             Platform.runLater(()-> {
                                 Log.addLogEvent("Winner");
+                                WinLosStage.createStage(true);
                             });
                             Main.write("$Lost");
 
@@ -67,8 +69,9 @@ public class Client {
                         {
                             Platform.runLater(()->{
                                 Log.addLogEvent("Lost Battle");
-                                Main.write("?"+attackPower);
+                                WinLosStage.createStage(false);
                             });
+                            Main.write("?"+attackPower);
                         }
                     }
 

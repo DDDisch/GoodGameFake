@@ -51,12 +51,18 @@ public class Main extends Application {
 
         new Log();
 
+        primaryStage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+            if(e.getCode() == KeyCode.ESCAPE) {
+                Platform.exit();
+            }
+        });
+
         addListener();
 
         wood.set(500);
         stone.set(200);
         money.set(1000);
-        food.set(300);
+        food.set(1000);
 
         root.setRight(menuRight.getVbox());
         root.setTop(statusBar.getHbox());
