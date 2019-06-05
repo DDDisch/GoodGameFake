@@ -21,7 +21,7 @@ public class person extends ImageView {
 
     //Recrute new Player of the Type with a Count
     public void build(int count) {
-        if(Main.food.getValue() > (foodCost * count)) {
+        if(Main.food.getValue() >= (foodCost * count)) {
             this.count.setValue(this.count.getValue() + count);
             Main.food.setValue(Main.food.getValue() - foodCost*count);
         }
