@@ -25,10 +25,10 @@ public class MenuRight extends VBox {
 
         VBox vbox = new VBox();
         vbox.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-        Text sword = new Text("Sword Atk: " + Main.sword.attack + " Sword Def: " + Main.sword.defense);
-        Text spear = new Text("Spear Atk: " + Main.spear.attack + " Spear Def: " + Main.spear.defense);
-        Text bow = new Text("Bow Atk: " + Main.bow.attack + " Bow Def: " + Main.bow.defense);
-        Text crossbow = new Text("Crossbow Atk: " + Main.crossbow.attack + " Crossbow Def: " + Main.crossbow.defense);
+        Text sword = new Text("Sword: Atk: " + Main.sword.attack + " Def: " + Main.sword.defense + " Cost: " + Main.sword.foodCost);
+        Text spear = new Text("Spear: Atk: " + Main.spear.attack + " Def: " + Main.spear.defense + " Cost: " + Main.spear.foodCost);
+        Text bow = new Text("Bow: Atk: " + Main.bow.attack + " Def: " + Main.bow.defense + " Cost: " + Main.bow.foodCost);
+        Text crossbow = new Text("Crossbow: Atk: " + Main.crossbow.attack + " Def: " + Main.crossbow.defense + " Cost: " + Main.crossbow.foodCost);
         vbox.getChildren().addAll(sword, spear, bow, crossbow);
 
         this.getChildren().add(vbox);

@@ -23,7 +23,7 @@ public class house extends ImageView {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    Main.wood.setValue(Main.money.getValue()+generate);
+                    Main.money.setValue(Main.money.getValue()+generate);
                 }
             }, 1000,1000);
 

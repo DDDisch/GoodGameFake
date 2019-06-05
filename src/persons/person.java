@@ -9,7 +9,7 @@ public class person extends ImageView {
     public int attack, defense;
     private Image image;
     private SimpleIntegerProperty count = new SimpleIntegerProperty(0);
-    private int foodCost;
+    public int foodCost;
 
     public person(Image elem, int attack, int defense, int foodCost) {
         super(elem);
