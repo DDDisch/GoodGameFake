@@ -17,7 +17,7 @@ public class barracks extends ImageView {
             Main.stone.setValue(Main.stone.getValue() - stoneCost);
             Main.soldierBuild.set(true);
         }
-        this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
+        this.setOnMousePressed(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
     private void nextLevel(double wood, double stone) {

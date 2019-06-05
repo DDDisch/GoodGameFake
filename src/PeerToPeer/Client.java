@@ -51,6 +51,7 @@ public class Client {
 
                     if (type.equals("-"))
                     {
+                        int attackPower = Integer.parseInt(input);
                         int erg = Integer.parseInt(input);
 
                         if (erg < 0)
@@ -59,13 +60,24 @@ public class Client {
                                 Log.addLogEvent("Winner");
                             });
                             Main.write("$Lost");
+
                         }
                         else
                         {
                             Platform.runLater(()->{
                                 Log.addLogEvent("Lost Battle");
+                                Main.write("?"+attackPower);
                             });
                         }
+                    }
+
+                    if(type.equals("?")) {
+                        int attackPower = Integer.parseInt(input);
+
+                        Main.sword.decreaseCount(attackPower/3);
+                        Main.spear.decreaseCount(attackPower/3);
+                        Main.bow.decreaseCount(attackPower/3);
+                        Main.crossbow.decreaseCount(attackPower/3);
                     }
 
                     if(type.equals("$"))

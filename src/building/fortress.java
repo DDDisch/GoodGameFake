@@ -14,7 +14,7 @@ public class fortress extends ImageView {
         this.setImage(new Image("images.buildings/fortress/Main1.png"));
         Main.wood.setValue(Main.wood.getValue() - woodCost);
         Main.stone.setValue(Main.stone.getValue() - stoneCost);
-        this.setOnMouseClicked(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
+        this.setOnMousePressed(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
     }
 
     private void nextLevel(double wood, double stone) {
