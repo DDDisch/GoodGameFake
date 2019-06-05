@@ -18,6 +18,8 @@ public class Log {
         log.setTitle("Attack Log");
         log.setScene(scene);
         log.setResizable(false);
+        log.setX(0);
+        log.setY(0);
         log.show();
         logEvents = new VBox();
 

@@ -50,12 +50,6 @@ public class Main extends Application {
 
         new Log();
 
-        primaryStage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
-            if(e.getCode().equals(KeyCode.ESCAPE)) {
-                Platform.exit();
-            }
-        });
-
         //CHANGE THE FUNCTION OF THE BUTTON IN THE MENU RIGHT CLASS (AREA IS MARKED WITH AN COMMENTARY)
         menuRight.createMenuItem("Attack", new Image("images/icon/sword.png"), 3);
 
