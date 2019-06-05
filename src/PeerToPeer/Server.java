@@ -1,5 +1,6 @@
 package PeerToPeer;
 
+import UI.Log;
 import sample.Main;
 
 import java.io.BufferedReader;
@@ -29,9 +30,8 @@ public class Server
             inSocket = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 
-            Thread readFromServer = new Thread(()->{
+            Thread readFromServer = new Thread(() -> {
                 try {
-
                     String input;
                     while ((input = inSocket.readLine()) != null) {
                         System.out.println(input);
@@ -47,6 +47,7 @@ public class Server
                             defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                             Main.write("-"+(defPower-attackPower));
+                            Log.addLogEvent("Attack Result: " + (defPower-attackPower));
                         }
 
                         if (type.equals("-"))
@@ -55,11 +56,11 @@ public class Server
 
                             if (erg < 0)
                             {
-                                System.out.println("Winner");
+                                Log.addLogEvent("Winner");
                             }
                             else
                             {
-                                System.out.println("Lost Battle");
+                                Log.addLogEvent("Lost Battle");
                             }
                         }
 

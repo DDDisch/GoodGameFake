@@ -1,5 +1,6 @@
 package sample;
 
+import UI.Log;
 import UI.MenuRight;
 import UI.PreConfig;
 import UI.StatusBar;
@@ -46,6 +47,8 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 750, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        new Log();
 
         primaryStage.addEventFilter(KeyEvent.KEY_PRESSED, e -> {
             if(e.getCode().equals(KeyCode.ESCAPE)) {

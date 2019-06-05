@@ -1,5 +1,6 @@
 package PeerToPeer;
 
+import UI.Log;
 import sample.Main;
 
 import java.io.BufferedReader;
@@ -40,6 +41,7 @@ public class Client {
                         defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                         Main.write("-"+(defPower-attackPower));
+                        Log.addLogEvent("Attack Result: " + (defPower-attackPower));
                     }
 
                     if (type.equals("-"))
@@ -48,11 +50,11 @@ public class Client {
 
                             if (erg < 0)
                             {
-                                System.out.println("Winner");
+                                Log.addLogEvent("Winner");
                             }
                             else
                             {
-                                System.out.println("Lost Battle");
+                                Log.addLogEvent("Lost Battle");
                             }
                     }
 
