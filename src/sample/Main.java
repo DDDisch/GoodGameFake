@@ -68,7 +68,6 @@ public class Main extends Application {
         root.setTop(statusBar.getHbox());
         preConfig = new PreConfig();
 
-
     }
 
     private void addListener() {

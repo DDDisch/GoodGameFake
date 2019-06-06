@@ -62,6 +62,7 @@ public class Server
 
                         if (type.equals("-"))
                         {
+                            int attackPower = Integer.parseInt(input);
                             int erg = Integer.parseInt(input);
 
                             if (erg < 0)
@@ -71,6 +72,7 @@ public class Server
                                     WinLosStage.createStage(true);
                                 });
                                 Main.write("$Lost");
+
                             }
                             else
                             {
@@ -89,8 +91,6 @@ public class Server
                         }
 
                     }
-                } catch (UnknownHostException e) {
-                    System.exit(1);
                 } catch (IOException e) {
                     System.exit(1);
                 }
