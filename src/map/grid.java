@@ -27,7 +27,7 @@ public class grid implements EventHandler<MouseEvent> {
         this.root = root;
 
         ImageView rect = null;
-        int randFortressPlace = new Random().nextInt(109);
+        int randFortressPlace = new Random().nextInt(100);
         for (int x = 0, c = 0; x < size; x = x + width, c++) {
             for (int y = 0; y < size; y = y + height) {
                 rect = ImageViewBuilder.create()
