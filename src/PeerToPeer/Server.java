@@ -53,6 +53,10 @@ public class Server
                             Main.write("-"+(defPower-attackPower));
                             Platform.runLater(()->{
                                 Log.addLogEvent("You got attack with: " + (attackPower));
+                                Main.sword.decreaseCount(attackPower/4/3);
+                                Main.spear.decreaseCount(attackPower/4/3);
+                                Main.bow.decreaseCount(attackPower/4/3);
+                                Main.crossbow.decreaseCount(attackPower/4/3);
                             });
                         }
 
@@ -72,18 +76,8 @@ public class Server
                             {
                                 Platform.runLater(()->{
                                     Log.addLogEvent("Lost Battle");
-                                    Main.write("?"+erg);
                                 });
                             }
-                        }
-
-                        if(type.equals("?")) {
-                            int attackPower = Integer.parseInt(input);
-
-                            Main.sword.decreaseCount(attackPower/4/3);
-                            Main.spear.decreaseCount(attackPower/4/3);
-                            Main.bow.decreaseCount(attackPower/4/3);
-                            Main.crossbow.decreaseCount(attackPower/4/3);
                         }
 
                         if(type.equals("$"))
