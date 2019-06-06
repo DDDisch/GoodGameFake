@@ -38,7 +38,9 @@ public class person extends ImageView {
 
     public void decreaseCount(int decrease)
     {
-        this.count.setValue(this.count.getValue()-decrease);
+        if(this.count.getValue()-decrease > 0) {
+            this.count.setValue(this.count.getValue() - decrease);
+        }
     }
 
     //Calculate Attack value of All Units of the Type
