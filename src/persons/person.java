@@ -38,8 +38,12 @@ public class person extends ImageView {
 
     public void decreaseCount(int decrease)
     {
-        if(this.count.getValue()-decrease > 0) {
+        if(this.count.getValue() - decrease > 0) {
             this.count.setValue(this.count.getValue() - decrease);
+        }
+        else
+        {
+            this.count.setValue(0);
         }
     }
 
