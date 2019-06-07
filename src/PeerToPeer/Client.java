@@ -46,6 +46,9 @@ public class Client {
                         defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                         Main.write("-"+(defPower-attackPower));
+
+                        defPower = 30;
+
                         Platform.runLater(()->{
                             Log.addLogEvent("You got attack with: " + (attackPower));
                             Main.sword.decreaseCount(attackPower/4/3);
