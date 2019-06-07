@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Server
 {
@@ -51,6 +50,9 @@ public class Server
                             defPower = Main.crossbow.calcDefenseAll() + defPower;
 
                             Main.write("-"+(defPower-attackPower));
+
+                            defPower = 30;
+
                             Platform.runLater(()->{
                                 Log.addLogEvent("You got attack with: " + (attackPower));
                                 Main.sword.decreaseCount(attackPower/4/3);
