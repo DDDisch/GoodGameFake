@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class house extends ImageView {
     private int level = 1;
     private Image image;
-    public double generate = 0.5;
+    public double generate = 1;
     private double woodCost=250;
     public int defenseLevel = 3;
     private Timer timer = new Timer(true);
