@@ -201,28 +201,19 @@ public class MenuRight extends VBox {
             buying.getChildren().addAll(food, wood, stone,buyResource);
             root.getChildren().add(buying);
 
-            foodField.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    foodNum = Integer.parseInt(foodField.getText());
-                    foodText.setText("-->" + (foodNum*foodCost) + "Gold");
-                }
+            foodField.textProperty().addListener((observable, oldValue, newValue) -> {
+                foodNum = Integer.parseInt(foodField.getText());
+                foodText.setText("-->" + (foodNum*foodCost) + "Gold");
             });
 
-            woodField.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    woodNum = Integer.parseInt(woodField.getText());
-                    woodText.setText("-->" + (woodNum*woodCost) + "Gold");
-                }
+            woodField.textProperty().addListener((observable, oldValue, newValue) -> {
+                woodNum = Integer.parseInt(woodField.getText());
+                woodText.setText("-->" + (woodNum*woodCost) + "Gold");
             });
 
-            stoneField.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    stoneNum = Integer.parseInt(stoneField.getText());
-                    stoneText.setText("-->" + (stoneNum*stoneCost) + "Gold");
-                }
+            stoneField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                stoneNum = Integer.parseInt(stoneField.getText());
+                stoneText.setText("-->" + (stoneNum*stoneCost) + "Gold");
             });
 
             buyResource.setOnAction(event -> {
