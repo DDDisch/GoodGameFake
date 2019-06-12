@@ -12,7 +12,7 @@ public class Log {
     Stage log = new Stage();
     Group root = new Group();
     ScrollPane sp = new ScrollPane();
-    Scene scene = new Scene(root,250,600);
+    Scene scene = new Scene(sp,250,600);
     static VBox logEvents;
 
     public Log()
