@@ -25,7 +25,7 @@ public class woodFarm extends ImageView {
                 public void run() {
                     Main.wood.setValue(Main.wood.getValue()+generate);
                 }
-            }, 1000,500);
+            }, 1000,250);
         }
 
 
