@@ -25,7 +25,7 @@ public class stoneFarm extends ImageView {
                 public void run() {
                     Main.stone.setValue(Main.stone.getValue()+generate);
                 }
-            }, 1000,1000);
+            }, 1000,500);
         }
 
         this.setOnMousePressed(e -> this.nextLevel(Main.wood.getValue(), Main.stone.getValue()));
