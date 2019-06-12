@@ -91,21 +91,30 @@ public class MenuRight extends VBox {
             Button attack = new Button("Attack!");
 
             attack.setOnAction(event -> {
+
                 attackPower = Main.sword.calcAttack((int)swordSlider.getValue());
                 attackPower = Main.bow.calcAttack((int)bowSlider.getValue()) + attackPower;
                 attackPower = Main.crossbow.calcAttack((int)crossbowSlider.getValue()) + attackPower;
                 attackPower = Main.spear.calcAttack((int)spearSlider.getValue()) + attackPower;
 
-                Main.write("!"+attackPower);
 
-                Log.addLogEvent("You attacked with " + attackPower + " attack power!");
+                if(attackPower == 0)
+                {
+                    Log.addLogEvent("Select some troops to attack enemy");
+                }
+                else {
 
-                Main.sword.decreaseCount((int)swordSlider.getValue());
-                Main.crossbow.decreaseCount((int)crossbowSlider.getValue());
-                Main.bow.decreaseCount((int)bowSlider.getValue());
-                Main.spear.decreaseCount((int)spearSlider.getValue());
+                    Main.write("!" + attackPower);
 
-                dialog.hide();
+                    Log.addLogEvent("You attacked with " + attackPower + " attack power!");
+
+                    Main.sword.decreaseCount((int) swordSlider.getValue());
+                    Main.crossbow.decreaseCount((int) crossbowSlider.getValue());
+                    Main.bow.decreaseCount((int) bowSlider.getValue());
+                    Main.spear.decreaseCount((int) spearSlider.getValue());
+
+                    dialog.hide();
+                }
 
             });
 

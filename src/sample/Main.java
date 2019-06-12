@@ -33,7 +33,7 @@ public class Main extends Application {
     //ARE STATIC TO ACCESS THEM IN OTHER CLASSES TO CHANGE THE VALUES
     public static person sword = new person(new Image("images/icon/sword.png"), 5,4,75);
     public static person spear = new person(new Image("images/icon/sword.png"), 8,5,125);
-    public static person bow = new person(new Image("images/icon/sword.png"), 7,7,150);
+    public static person bow = new person(new Image("images/icon/sword.png"), 7,9,150);
     public static person crossbow = new person(new Image("images/icon/sword.png"), 8,6,175);
 
     public static SimpleBooleanProperty soldierBuild = new SimpleBooleanProperty(false);
