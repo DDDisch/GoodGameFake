@@ -118,7 +118,7 @@ public class MenuRight extends VBox {
 
             });
 
-            int defPower = 30;
+            int defPower = 50;
             defPower = Main.sword.calcDefenseAll() + defPower;
             defPower = Main.spear.calcDefenseAll() + defPower;
             defPower = Main.bow.calcDefenseAll() + defPower;

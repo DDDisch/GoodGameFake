@@ -46,7 +46,7 @@ public class Client {
 
                         Main.write("-"+(defPower-attackPower));
 
-                        defPower = 30;
+                        defPower = 50;
 
                         Platform.runLater(()->{
                             Log.addLogEvent("You got attack with: " + (attackPower));
