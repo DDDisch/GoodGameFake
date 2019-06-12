@@ -33,7 +33,6 @@ public class Client {
             try {
                 String input;
                 while ((input = inSocket.readLine()) != null) {
-                    System.out.println(input);
 
                     String type = input.substring(0,1);
                     input = input.substring(1);
@@ -75,7 +74,7 @@ public class Client {
                         else
                         {
                             Platform.runLater(()->{
-                                Log.addLogEvent("Lost Battle");
+                                Log.addLogEvent("Lost Battle, Result: "+erg);
                             });
                         }
                     }
