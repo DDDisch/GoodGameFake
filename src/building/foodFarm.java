@@ -35,7 +35,7 @@ public class foodFarm extends ImageView {
         if (level < 3) {
             if(level == 1) {
                 woodCost *= 2;
-                stoneCost = 300;
+                stoneCost *= 2;
                 generate *= 3;
                 level ++;
             } else {
