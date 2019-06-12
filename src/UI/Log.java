@@ -2,6 +2,7 @@ package UI;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -10,6 +11,7 @@ public class Log {
 
     Stage log = new Stage();
     Group root = new Group();
+    ScrollPane sp = new ScrollPane();
     Scene scene = new Scene(root,250,600);
     static VBox logEvents;
 
@@ -24,7 +26,7 @@ public class Log {
         logEvents = new VBox();
 
         root.getChildren().add(logEvents);
-
+        sp.setContent(root);
     }
 
 
